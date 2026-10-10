@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use HEPHAGENT in teaching or research, please cite it as below."
+title: "HEPHAGENT: six isolated AI teams forging software end to end"
+type: software
+version: "0.1"
+date-released: "2026-10-11"
+url: "https://github.com/spicslab-kr/HephAgent"
+repository-code: "https://github.com/spicslab-kr/HephAgent"
+authors:
+  - family-names: "Nam"
+    given-names: "Kevin"
+    email: "kvnam@khu.ac.kr"
+    affiliation: "SPICS Lab, Kyung Hee University"
+keywords:
+  - software engineering education
+  - software development life cycle
+  - multi-agent systems
+  - LLM agents

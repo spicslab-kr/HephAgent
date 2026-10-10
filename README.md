@@ -6,13 +6,20 @@
 
 <p align="center"><b>Six isolated AI teams forge one software project end to end, and every hand-over is a file you can read.</b></p>
 
+<p align="center">
+  <sub>CREATED AND MAINTAINED BY</sub><br>
+  <a href="mailto:kvnam@khu.ac.kr"><b>Kevin Nam</b></a><br>
+  SPICS Lab, Kyung Hee University<br>
+  <a href="mailto:kvnam@khu.ac.kr">kvnam@khu.ac.kr</a> &nbsp;·&nbsp;
+  <a href="https://github.com/spicslab-kr/HephAgent/issues">GitHub issues</a> &nbsp;·&nbsp;
+  <a href="#acknowledging-this-work">How to cite</a>
+</p>
+
 Planning → Requirements → Design → Implementation → Testing → Maintenance. Each team is a
 small group of agents with its own workspace; teams never talk to each other, they deliver
 immutable documents. A runtime owns the state, enforces the gates, runs the tests itself and
 labels honestly what it could not prove. Built for a software-engineering course, usable by
 anyone who wants to watch an SDLC happen rather than read about it.
-
-**Author:** Kevin Nam (Kyung Hee University, SPICS lab) · **Questions:** <kvnam@khu.ac.kr> · **Issues:** [GitHub issues](https://github.com/spicslab-kr/software_engineering_tool/issues)
 
 ![python](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)
 ![brains](https://img.shields.io/badge/brains-Claude%20Code%20%C2%B7%20Codex%20CLI%20%C2%B7%20local-8A2BE2)
@@ -116,6 +123,19 @@ Read [`code/AGENTS.md`](code/AGENTS.md) for the rules the code follows (readable
 students, no silent fallbacks, no fabricated evidence), run the offline suite with
 `python -m pytest -q`, and open an issue or a pull request. Live runs against the model
 clients are never part of the default tests.
+
+## Acknowledging this work
+
+HEPHAGENT was conceived, designed and built by Kevin Nam for a software-engineering course
+at Kyung Hee University. If you use it in teaching or research, please cite it; GitHub's
+"Cite this repository" button uses the `CITATION.cff` file in this folder.
+
+```text
+Nam, K. (2026). HEPHAGENT: six isolated AI teams forging software end to end (Version 0.1)
+[Computer software]. SPICS Lab, Kyung Hee University. https://github.com/spicslab-kr/HephAgent
+```
+
+Questions, course adoption or collaboration: kvnam@khu.ac.kr.
 
 ## Acknowledgements
 
