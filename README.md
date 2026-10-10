@@ -8,7 +8,7 @@ immutable documents. A runtime owns the state, enforces the gates, runs the test
 labels honestly what it could not prove. Built for a software-engineering course, usable by
 anyone who wants to watch an SDLC happen rather than read about it.
 
-**Author:** Kevin Nam (Kyung Hee University, SPICS lab) · **Questions:** <kvnam92310@gmail.com> · **Issues:** [GitHub issues](https://github.com/spicslab-kr/software_engineering_tool/issues)
+**Author:** Kevin Nam (Kyung Hee University, SPICS lab) · **Questions:** <kvnam@khu.ac.kr> · **Issues:** [GitHub issues](https://github.com/spicslab-kr/software_engineering_tool/issues)
 
 ![python](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)
 ![brains](https://img.shields.io/badge/brains-Claude%20Code%20%C2%B7%20Codex%20CLI%20%C2%B7%20local-8A2BE2)
