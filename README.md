@@ -113,9 +113,8 @@ clients are never part of the default tests.
 
 ## Acknowledgements
 
-The design handoff in `handoff/` was produced with ChatGPT and Codex; the implementation in
-`code/` with Claude Code, under the author's direction. Both are recorded as such in the
-work log.
+I highly thank Codex and Claude Code to find un-debuggable issues from my code. Over half of the codes were modified by them during the debugging process.
+As you can guess, this repo itself was used in generating this this repo itself.
 
 ## License
 
