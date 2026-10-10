@@ -1,0 +1,738 @@
+{
+  "comment": "Recorded Brain and research replies for the library-reservation walkthrough. Everything here is origin: fixture and cannot satisfy an engineering gate. Selectors: task:<id>, operation:<name>, default.",
+  "research": {
+    "default": {
+      "evidence": [
+        {
+          "schema_version": "1.0",
+          "query": "library reservation systems double booking",
+          "retrieved_at": "2026-10-09T00:00:00Z",
+          "url": "https://example.org/fixture/library-reservations",
+          "title": "Fixture: reservation conflicts in small library systems",
+          "source_date": "2025",
+          "excerpts": [
+            "Concurrent reservation attempts for one copy are the most common defect report in small systems."
+          ],
+          "claims": [
+            {
+              "claim_id": "claim-fx-1",
+              "statement": "Concurrent reservation attempts for one copy are a common defect source.",
+              "basis": "retrieved",
+              "source_refs": [],
+              "source_locators": [
+                "fixture excerpt 1"
+              ],
+              "limitations": [
+                "fixture evidence, not a live retrieval"
+              ]
+            }
+          ],
+          "synthetic": false,
+          "generation_method": null
+        }
+      ],
+      "failures": [],
+      "limitations": [
+        "recorded fixture; no live search"
+      ]
+    }
+  },
+  "steps": {
+    "operation:planning.plan_work": {
+      "proposal": {
+        "summary": "Planning leader proposes a three-task graph: frame the problem, research context, prepare the plan.",
+        "artifact_candidates": [
+          {
+            "kind": "task_graph",
+            "media_type": "application/json",
+            "relative_path": "plans/task-graph.json",
+            "workspace_path": null,
+            "content_text": "{\"tasks\": [\n {\"cycle_id\": \"cycle-001\", \"task_id\": \"planning-frame\", \"team_id\": \"planning\", \"agent_instance_id\": \"planning-analyst\", \"operation\": \"planning.frame_problem\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"Frame the library reservation problem\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"problem_frame\"], \"diagram_request\": null}},\n {\"cycle_id\": \"cycle-001\", \"task_id\": \"planning-research\", \"team_id\": \"planning\", \"agent_instance_id\": \"planning-researcher\", \"operation\": \"planning.research_context\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"library reservation systems double booking\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"research_summary\"], \"diagram_request\": null}},\n {\"cycle_id\": \"cycle-001\", \"task_id\": \"planning-handoff\", \"team_id\": \"planning\", \"agent_instance_id\": \"planning-leader\", \"operation\": \"planning.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"planning-frame\", \"planning-research\"], \"parameters\": {\"objective\": \"Assemble PROJECT_PLAN.md\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"project_plan\"], \"diagram_request\": null}}\n]}"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": [
+          "planning.frame_problem",
+          "planning.research_context"
+        ]
+      }
+    },
+    "operation:planning.frame_problem": {
+      "proposal": {
+        "summary": "Problem framed from the brief.",
+        "artifact_candidates": [
+          {
+            "kind": "problem_frame",
+            "media_type": "text/markdown",
+            "relative_path": "docs/PROBLEM.md",
+            "workspace_path": null,
+            "content_text": "# Problem frame\n\n## Problem\nMembers cannot reliably reserve a copy without double booking.\n\n## Beneficiaries\nStudent members, librarians.\n\n## Success proposals\n- Two concurrent attempts for one copy never both succeed.\n\n## Scope\nIn: reserve, cancel own, inspect active. Out: authentication, expiry (open decisions).\n"
+          }
+        ],
+        "findings": [],
+        "questions": [
+          "Is expiry required for the first release?"
+        ],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:planning.research_context": {
+      "proposal": {
+        "summary": "Research synthesised from supplied evidence; one simulated librarian opinion labeled synthetic.",
+        "artifact_candidates": [
+          {
+            "kind": "research_summary",
+            "media_type": "text/markdown",
+            "relative_path": "docs/RESEARCH.md",
+            "workspace_path": null,
+            "content_text": "# Research summary\n\n## Retrieved\n- Concurrency conflicts are a common defect source (evidence-1, fixture, retrieved 2026-10-09; limitation: recorded fixture).\n\n## Role simulation (synthetic)\n- A simulated librarian persona prioritises seeing active reservations at a glance. This is generated, not a real interview.\n\n## Open research questions\n- Expected peak concurrent users (unknown; no data).\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:planning.prepare_handoff": {
+      "proposal": {
+        "summary": "PROJECT_PLAN.md assembled; expiry and authentication remain open decisions.",
+        "artifact_candidates": [
+          {
+            "kind": "project_plan",
+            "media_type": "text/markdown",
+            "relative_path": "PROJECT_PLAN.md",
+            "workspace_path": null,
+            "content_text": "# Project plan\n\n## Problem\nDouble booking of library copies.\n\n## Users\nMembers, librarians.\n\n## Success measures\nNo two active reservations per copy under concurrent attempts.\n\n## Scope\nReserve, cancel own, inspect active reservations.\n\n## Constraints\nLocal, single process, file-backed database.\n\n## Feasibility\nFeasible with a transactional reservation service.\n\n## Work plan\nRequirements -> design -> implementation -> testing in one cycle.\n\n## Risks\nConcurrency defects (likelihood high, estimate).\n\n## Open decisions\nAuthentication, expiry, performance thresholds.\n\n## Evidence\nSee docs/RESEARCH.md (fixture evidence; synthetic persona labeled).\n"
+          }
+        ],
+        "findings": [
+          {
+            "finding_id": "finding-open-decisions",
+            "code": "open_decision",
+            "severity": "warning",
+            "message": "Authentication and expiry are undecided; Requirements must not invent them.",
+            "related_refs": []
+          }
+        ],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:requirements.plan_work": {
+      "proposal": {
+        "summary": "Requirements leader proposes extract -> validate -> prepare_handoff.",
+        "artifact_candidates": [
+          {
+            "kind": "task_graph",
+            "media_type": "application/json",
+            "relative_path": "plans/task-graph.json",
+            "workspace_path": null,
+            "content_text": "{\"tasks\": [\n {\"cycle_id\": \"cycle-001\", \"task_id\": \"req-extract\", \"team_id\": \"requirements\", \"agent_instance_id\": \"requirements-analyst\", \"operation\": \"requirements.extract\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"Extract requirements from the brief and plan\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"requirements\"], \"diagram_request\": null}},\n {\"cycle_id\": \"cycle-001\", \"task_id\": \"req-validate\", \"team_id\": \"requirements\", \"agent_instance_id\": \"requirements-reviewer\", \"operation\": \"requirements.validate\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"req-extract\"], \"parameters\": {\"objective\": \"Validate the requirements set\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"validation\"], \"diagram_request\": null}},\n {\"cycle_id\": \"cycle-001\", \"task_id\": \"req-handoff\", \"team_id\": \"requirements\", \"agent_instance_id\": \"requirements-leader\", \"operation\": \"requirements.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"req-validate\"], \"parameters\": {\"objective\": \"Assemble REQUIREMENTS.md\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"requirements_document\"], \"diagram_request\": null}}\n]}"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:requirements.extract": {
+      "proposal": {
+        "summary": "Three requirements extracted with claims traced to brief paragraphs.",
+        "artifact_candidates": [
+          {
+            "kind": "requirements",
+            "media_type": "application/json",
+            "relative_path": "requirements.json",
+            "workspace_path": null,
+            "content_text": "{\"schema_version\": \"1.0\", \"scope\": \"Library reservation demo, first release\", \"requirements\": [\n {\"requirement_id\": \"REQ-001\", \"revision\": 1, \"kind\": \"functional\", \"statement\": \"A member can reserve an available copy.\", \"rationale\": \"Core user goal from the brief.\", \"priority\": \"must\", \"source_claim_ids\": [\"claim-brief-1\"], \"acceptance\": [\"Given an available copy, when a member reserves it, the reservation is active and the copy is no longer available.\"], \"verification_method\": \"automated_test\", \"open_questions\": []},\n {\"requirement_id\": \"REQ-002\", \"revision\": 1, \"kind\": \"domain_rule\", \"statement\": \"Two active reservations for the same copy never coexist.\", \"rationale\": \"Explicit invariant in the brief.\", \"priority\": \"must\", \"source_claim_ids\": [\"claim-brief-2\"], \"acceptance\": [\"When two members attempt the same available copy concurrently, exactly one reservation becomes active and the other receives a conflict response.\"], \"verification_method\": \"automated_test\", \"open_questions\": [\"Exact conflict response is a design decision.\"]},\n {\"requirement_id\": \"REQ-003\", \"revision\": 1, \"kind\": \"functional\", \"statement\": \"A librarian can list active reservations.\", \"rationale\": \"Stated librarian goal.\", \"priority\": \"should\", \"source_claim_ids\": [\"claim-brief-3\"], \"acceptance\": [\"The active-reservation list shows every active reservation and no cancelled one.\"], \"verification_method\": \"automated_test\", \"open_questions\": []}\n], \"claims\": [\n {\"claim_id\": \"claim-brief-1\", \"statement\": \"Members reserve available copies and cancel their own.\", \"basis\": \"participant\", \"source_refs\": [], \"source_locators\": [\"brief.md paragraph 2\"], \"limitations\": []},\n {\"claim_id\": \"claim-brief-2\", \"statement\": \"Two active reservations for one copy must never coexist.\", \"basis\": \"participant\", \"source_refs\": [], \"source_locators\": [\"brief.md paragraph 2\"], \"limitations\": []},\n {\"claim_id\": \"claim-brief-3\", \"statement\": \"Librarians inspect active reservations.\", \"basis\": \"participant\", \"source_refs\": [], \"source_locators\": [\"brief.md paragraph 2\"], \"limitations\": []}\n], \"assumptions\": [\"Authentication is out of scope for the first release (open decision, not decided here).\"]}"
+          }
+        ],
+        "findings": [],
+        "questions": [
+          "Should expiry be a requirement in this release?"
+        ],
+        "suggested_next_operations": [
+          "requirements.validate"
+        ]
+      }
+    },
+    "operation:requirements.validate": {
+      "proposal": {
+        "summary": "No blocking defects; expiry remains an open question.",
+        "artifact_candidates": [
+          {
+            "kind": "validation",
+            "media_type": "text/markdown",
+            "relative_path": "docs/VALIDATION.md",
+            "workspace_path": null,
+            "content_text": "# Validation\n\n- REQ-001..003 have acceptance conditions and sources.\n- Open: reservation expiry (participant decision needed).\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": [
+          "requirements.prepare_handoff"
+        ]
+      }
+    },
+    "operation:requirements.prepare_handoff": {
+      "proposal": {
+        "summary": "REQUIREMENTS.md and canonical requirements.json assembled.",
+        "artifact_candidates": [
+          {
+            "kind": "requirements_document",
+            "media_type": "text/markdown",
+            "relative_path": "REQUIREMENTS.md",
+            "workspace_path": null,
+            "content_text": "# Requirements specification\n\n## Scope\nLibrary reservation demo.\n\n## Glossary\nCopy, reservation, member, librarian.\n\n## Actors\nMember, librarian.\n\n## Functional requirements\nREQ-001, REQ-003.\n\n## Nonfunctional requirements\nNone decided (performance thresholds open).\n\n## Rules\nREQ-002.\n\n## Acceptance\nSee requirements.json.\n\n## Unresolved dispositions\nExpiry, authentication.\n\n## Evidence\nBrief paragraphs; fixture research.\n"
+          },
+          {
+            "kind": "requirements",
+            "media_type": "application/json",
+            "relative_path": "requirements.json",
+            "workspace_path": null,
+            "content_text": "{\"schema_version\": \"1.0\", \"scope\": \"Library reservation demo, first release\", \"requirements\": [{\"requirement_id\": \"REQ-001\", \"revision\": 1, \"kind\": \"functional\", \"statement\": \"A member can reserve an available copy.\", \"rationale\": \"Core user goal from the brief.\", \"priority\": \"must\", \"source_claim_ids\": [\"claim-brief-1\"], \"acceptance\": [\"Given an available copy, when a member reserves it, the reservation is active and the copy is no longer available.\"], \"verification_method\": \"automated_test\", \"open_questions\": []}, {\"requirement_id\": \"REQ-002\", \"revision\": 1, \"kind\": \"domain_rule\", \"statement\": \"Two active reservations for the same copy never coexist.\", \"rationale\": \"Explicit invariant in the brief.\", \"priority\": \"must\", \"source_claim_ids\": [\"claim-brief-2\"], \"acceptance\": [\"When two members attempt the same available copy concurrently, exactly one reservation becomes active and the other receives a conflict response.\"], \"verification_method\": \"automated_test\", \"open_questions\": [\"Exact conflict response is a design decision.\"]}, {\"requirement_id\": \"REQ-003\", \"revision\": 1, \"kind\": \"functional\", \"statement\": \"A librarian can list active reservations.\", \"rationale\": \"Stated librarian goal.\", \"priority\": \"should\", \"source_claim_ids\": [\"claim-brief-3\"], \"acceptance\": [\"The active-reservation list shows every active reservation and no cancelled one.\"], \"verification_method\": \"automated_test\", \"open_questions\": []}], \"claims\": [{\"claim_id\": \"claim-brief-1\", \"statement\": \"Members reserve available copies and cancel their own.\", \"basis\": \"participant\", \"source_refs\": [], \"source_locators\": [\"brief.md paragraph 2\"], \"limitations\": []}, {\"claim_id\": \"claim-brief-2\", \"statement\": \"Two active reservations for one copy must never coexist.\", \"basis\": \"participant\", \"source_refs\": [], \"source_locators\": [\"brief.md paragraph 2\"], \"limitations\": []}, {\"claim_id\": \"claim-brief-3\", \"statement\": \"Librarians inspect active reservations.\", \"basis\": \"participant\", \"source_refs\": [], \"source_locators\": [\"brief.md paragraph 2\"], \"limitations\": []}], \"assumptions\": [\"Authentication is out of scope for the first release (open decision).\"]}"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:requirements.request_diagram": {
+      "proposal": {
+        "summary": "Use case diagram answering: which actor goals does the system serve? (unrendered PlantUML source)",
+        "artifact_candidates": [
+          {
+            "kind": "diagram_source",
+            "media_type": "text/x-plantuml",
+            "relative_path": "diagrams/use-cases.puml",
+            "workspace_path": null,
+            "content_text": "@startuml\n' scope: REQ-001, REQ-002, REQ-003\nleft to right direction\nactor Member\nactor Librarian\nrectangle \"Library reservation\" {\n  usecase \"Reserve available copy (REQ-001)\" as UC1\n  usecase \"Cancel own reservation\" as UC2\n  usecase \"List active reservations (REQ-003)\" as UC3\n}\nMember --> UC1\nMember --> UC2\nLibrarian --> UC3\nnote right of UC1 : REQ-002 forbids a second active reservation\n@enduml\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:implementation.plan_work": [
+      {
+        "proposal": {
+          "summary": "Implementation leader proposes plan -> code -> check -> handoff.",
+          "artifact_candidates": [
+            {
+              "kind": "task_graph",
+              "media_type": "application/json",
+              "relative_path": "plans/task-graph.json",
+              "workspace_path": null,
+              "content_text": "{\"tasks\": [{\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-plan-changes\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-leader\", \"operation\": \"implementation.plan_changes\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"Plan the bounded changes for the reservation service\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"change_plan\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-code\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-coder\", \"operation\": \"implementation.code\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"impl-plan-changes\"], \"parameters\": {\"objective\": \"Implement the reservation service module with a conflict check\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-check\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-checker\", \"operation\": \"implementation.check\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"impl-code\"], \"parameters\": {\"objective\": \"Run the registered check recipes on the candidate\", \"scope_ids\": [\"pytest\"], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-handoff\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-leader\", \"operation\": \"implementation.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"impl-check\"], \"parameters\": {\"objective\": \"Assemble IMPLEMENTATION.md\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"implementation_document\"], \"diagram_request\": null}}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      },
+      {
+        "proposal": {
+          "summary": "implementation leader proposes 4 tasks.",
+          "artifact_candidates": [
+            {
+              "kind": "task_graph",
+              "media_type": "application/json",
+              "relative_path": "plans/task-graph.json",
+              "workspace_path": null,
+              "content_text": "{\"tasks\": [{\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-plan-changes-r2\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-impl-plan-changes-r2\", \"operation\": \"implementation.plan_changes\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"Plan the repair of the delivered defects\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-code-r2\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-impl-code-r2\", \"operation\": \"implementation.code\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"impl-plan-changes-r2\"], \"parameters\": {\"objective\": \"Repair DEF-001 on the current candidate\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-check-r2\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-impl-check-r2\", \"operation\": \"implementation.check\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"impl-code-r2\"], \"parameters\": {\"objective\": \"impl-check-r2\", \"scope_ids\": [\"pytest\"], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-handoff-r2\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-impl-handoff-r2\", \"operation\": \"implementation.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"impl-check-r2\"], \"parameters\": {\"objective\": \"impl-handoff-r2\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      },
+      {
+        "proposal": {
+          "summary": "implementation leader proposes 4 tasks.",
+          "artifact_candidates": [
+            {
+              "kind": "task_graph",
+              "media_type": "application/json",
+              "relative_path": "plans/task-graph.json",
+              "workspace_path": null,
+              "content_text": "{\"tasks\": [{\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-plan-changes-r3\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-impl-plan-changes-r3\", \"operation\": \"implementation.plan_changes\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"Plan the change requested by Maintenance (CHANGE_SPEC.md)\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-code-r3\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-impl-code-r3\", \"operation\": \"implementation.code\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"impl-plan-changes-r3\"], \"parameters\": {\"objective\": \"Apply CR-001 on the current candidate\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-check-r3\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-impl-check-r3\", \"operation\": \"implementation.check\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"impl-code-r3\"], \"parameters\": {\"objective\": \"impl-check-r3\", \"scope_ids\": [\"pytest\"], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"impl-handoff-r3\", \"team_id\": \"implementation\", \"agent_instance_id\": \"implementation-impl-handoff-r3\", \"operation\": \"implementation.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"impl-check-r3\"], \"parameters\": {\"objective\": \"impl-handoff-r3\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      }
+    ],
+    "operation:implementation.plan_changes": {
+      "proposal": {
+        "summary": "One bounded change: reservation module + tests.",
+        "artifact_candidates": [
+          {
+            "kind": "change_plan",
+            "media_type": "text/markdown",
+            "relative_path": "docs/CHANGE_PLAN.md",
+            "workspace_path": null,
+            "content_text": "# Change plan\n\n## Change 1: reservation service\nFiles: reservation.py, test_reservation.py. Serves REQ-001, REQ-002. Checked by recipe pytest.\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:implementation.prepare_handoff": {
+      "proposal": {
+        "summary": "IMPLEMENTATION.md assembled for the candidate.",
+        "artifact_candidates": [
+          {
+            "kind": "implementation_document",
+            "media_type": "text/markdown",
+            "relative_path": "IMPLEMENTATION.md",
+            "workspace_path": null,
+            "content_text": "# Implementation\n\n## Candidate\nSee the impl-code candidate snapshot.\n\n## Build and run\npython -m pytest -q -v\n\n## Requirement status\nREQ-001 implemented; REQ-002 implemented; REQ-003 not started.\n\n## Developer verification\nSee the recorded pytest run.\n\n## Known issues\nNone recorded.\n\n## Limitations\nDevelopment isolation (nonconforming).\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:testing.plan_work": [
+      {
+        "proposal": {
+          "summary": "testing leader proposes 9 tasks.",
+          "artifact_candidates": [
+            {
+              "kind": "task_graph",
+              "media_type": "application/json",
+              "relative_path": "plans/task-graph.json",
+              "workspace_path": null,
+              "content_text": "{\"tasks\": [{\"cycle_id\": \"cycle-001\", \"task_id\": \"test-plan\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-plan\", \"operation\": \"testing.plan\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"test-plan\", \"scope_ids\": [\"REQ-001\", \"REQ-002\"], \"requested_artifact_kinds\": [\"test_plan\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-cases\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-cases\", \"operation\": \"testing.derive_cases\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-plan\"], \"parameters\": {\"objective\": \"test-cases\", \"scope_ids\": [\"REQ-001\", \"REQ-002\"], \"requested_artifact_kinds\": [\"test_cases\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-bench-design\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-bench-design\", \"operation\": \"testing.design_bench\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-cases\"], \"parameters\": {\"objective\": \"test-bench-design\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"bench_design\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-bench\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-bench\", \"operation\": \"testing.implement_bench\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-bench-design\"], \"parameters\": {\"objective\": \"test-bench\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-preflight\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-preflight\", \"operation\": \"testing.preflight\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-bench\"], \"parameters\": {\"objective\": \"test-preflight\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-execute\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-execute\", \"operation\": \"testing.execute\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-preflight\"], \"parameters\": {\"objective\": \"test-execute\", \"scope_ids\": [\"pytest\"], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-analyze\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-analyze\", \"operation\": \"testing.analyze\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-execute\"], \"parameters\": {\"objective\": \"test-analyze\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"defect_report\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-assess\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-assess\", \"operation\": \"testing.assess_release\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-analyze\"], \"parameters\": {\"objective\": \"test-assess\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"test_report\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-handoff\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-handoff\", \"operation\": \"testing.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-assess\"], \"parameters\": {\"objective\": \"test-handoff\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      },
+      {
+        "proposal": {
+          "summary": "testing leader proposes 9 tasks.",
+          "artifact_candidates": [
+            {
+              "kind": "task_graph",
+              "media_type": "application/json",
+              "relative_path": "plans/task-graph.json",
+              "workspace_path": null,
+              "content_text": "{\"tasks\": [{\"cycle_id\": \"cycle-001\", \"task_id\": \"test-plan-r2\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-plan-r2\", \"operation\": \"testing.plan\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"test-plan-r2\", \"scope_ids\": [\"REQ-001\", \"REQ-002\"], \"requested_artifact_kinds\": [\"test_plan\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-cases-r2\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-cases-r2\", \"operation\": \"testing.derive_cases\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-plan-r2\"], \"parameters\": {\"objective\": \"test-cases-r2\", \"scope_ids\": [\"REQ-001\", \"REQ-002\"], \"requested_artifact_kinds\": [\"test_cases\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-bench-design-r2\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-bench-design-r2\", \"operation\": \"testing.design_bench\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-cases-r2\"], \"parameters\": {\"objective\": \"test-bench-design-r2\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"bench_design\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-bench-r2\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-bench-r2\", \"operation\": \"testing.implement_bench\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-bench-design-r2\"], \"parameters\": {\"objective\": \"test-bench-r2\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-preflight-r2\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-preflight-r2\", \"operation\": \"testing.preflight\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-bench-r2\"], \"parameters\": {\"objective\": \"test-preflight-r2\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-execute-r2\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-execute-r2\", \"operation\": \"testing.execute\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-preflight-r2\"], \"parameters\": {\"objective\": \"test-execute-r2\", \"scope_ids\": [\"pytest\"], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-analyze-r2\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-analyze-r2\", \"operation\": \"testing.analyze\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-execute-r2\"], \"parameters\": {\"objective\": \"test-analyze-r2\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"defect_report\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-assess-r2\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-assess-r2\", \"operation\": \"testing.assess_release\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-analyze-r2\"], \"parameters\": {\"objective\": \"test-assess-r2\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"test_report\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-handoff-r2\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-handoff-r2\", \"operation\": \"testing.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-assess-r2\"], \"parameters\": {\"objective\": \"test-handoff-r2\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      },
+      {
+        "proposal": {
+          "summary": "testing leader proposes 9 tasks.",
+          "artifact_candidates": [
+            {
+              "kind": "task_graph",
+              "media_type": "application/json",
+              "relative_path": "plans/task-graph.json",
+              "workspace_path": null,
+              "content_text": "{\"tasks\": [{\"cycle_id\": \"cycle-001\", \"task_id\": \"test-plan-r3\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-plan-r3\", \"operation\": \"testing.plan\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"test-plan-r3\", \"scope_ids\": [\"REQ-001\", \"REQ-002\"], \"requested_artifact_kinds\": [\"test_plan\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-cases-r3\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-cases-r3\", \"operation\": \"testing.derive_cases\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-plan-r3\"], \"parameters\": {\"objective\": \"test-cases-r3\", \"scope_ids\": [\"REQ-001\", \"REQ-002\"], \"requested_artifact_kinds\": [\"test_cases\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-bench-design-r3\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-bench-design-r3\", \"operation\": \"testing.design_bench\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-cases-r3\"], \"parameters\": {\"objective\": \"test-bench-design-r3\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"bench_design\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-bench-r3\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-bench-r3\", \"operation\": \"testing.implement_bench\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-bench-design-r3\"], \"parameters\": {\"objective\": \"test-bench-r3\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-preflight-r3\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-preflight-r3\", \"operation\": \"testing.preflight\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-bench-r3\"], \"parameters\": {\"objective\": \"test-preflight-r3\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-execute-r3\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-execute-r3\", \"operation\": \"testing.execute\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-preflight-r3\"], \"parameters\": {\"objective\": \"test-execute-r3\", \"scope_ids\": [\"pytest\"], \"requested_artifact_kinds\": [], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-analyze-r3\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-analyze-r3\", \"operation\": \"testing.analyze\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-execute-r3\"], \"parameters\": {\"objective\": \"test-analyze-r3\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"defect_report\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-assess-r3\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-assess-r3\", \"operation\": \"testing.assess_release\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-analyze-r3\"], \"parameters\": {\"objective\": \"test-assess-r3\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"test_report\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"test-handoff-r3\", \"team_id\": \"testing\", \"agent_instance_id\": \"testing-test-handoff-r3\", \"operation\": \"testing.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"test-assess-r3\"], \"parameters\": {\"objective\": \"test-handoff-r3\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      }
+    ],
+    "operation:testing.plan": {
+      "proposal": {
+        "summary": "test_plan written.",
+        "artifact_candidates": [
+          {
+            "kind": "test_plan",
+            "media_type": "application/json",
+            "relative_path": "tests/TEST_PLAN.json",
+            "workspace_path": null,
+            "content_text": "{\"schema_version\": \"1.0\", \"requirements_ref\": @DOC:req-handoff-requirements@, \"source_ref\": null, \"cases\": [{\"case_id\": \"TC-001\", \"requirement_ids\": [\"REQ-001\"], \"level\": \"unit\", \"purpose\": \"a free copy can be reserved\", \"preconditions\": [\"empty service\"], \"steps\": [\"reserve c1 for m1\"], \"expected\": [\"c1 is active for m1\"], \"technique\": \"equivalence partition\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}, {\"case_id\": \"TC-002\", \"requirement_ids\": [\"REQ-001\"], \"level\": \"unit\", \"purpose\": \"a reserved copy cannot be reserved by another member\", \"preconditions\": [\"c1 reserved by m1\"], \"steps\": [\"reserve c1 for m2\"], \"expected\": [\"ReservationError\"], \"technique\": \"decision table\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}, {\"case_id\": \"TC-003\", \"requirement_ids\": [\"REQ-002\"], \"level\": \"unit\", \"purpose\": \"cancelling frees the copy for the next member\", \"preconditions\": [\"c1 reserved by m1\"], \"steps\": [\"cancel c1 by m1\", \"reserve c1 for m2\"], \"expected\": [\"c1 is active for m2\"], \"technique\": \"state transition\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}], \"environment_requirements\": [\"python 3.12+\", \"pytest\"], \"exit_criteria\": [\"every automated case executed and passed\", \"no critical or major defect open\"], \"risks\": [\"state not freed after cancel\"]}"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:testing.derive_cases": [
+      {
+        "proposal": {
+          "summary": "test_cases written.",
+          "artifact_candidates": [
+            {
+              "kind": "test_cases",
+              "media_type": "application/json",
+              "relative_path": "tests/TEST_CASES.json",
+              "workspace_path": null,
+              "content_text": "{\"cases\": [{\"case_id\": \"TC-001\", \"requirement_ids\": [\"REQ-001\"], \"level\": \"unit\", \"purpose\": \"a free copy can be reserved\", \"preconditions\": [\"empty service\"], \"steps\": [\"reserve c1 for m1\"], \"expected\": [\"c1 is active for m1\"], \"technique\": \"equivalence partition\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}, {\"case_id\": \"TC-002\", \"requirement_ids\": [\"REQ-001\"], \"level\": \"unit\", \"purpose\": \"a reserved copy cannot be reserved by another member\", \"preconditions\": [\"c1 reserved by m1\"], \"steps\": [\"reserve c1 for m2\"], \"expected\": [\"ReservationError\"], \"technique\": \"decision table\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}, {\"case_id\": \"TC-003\", \"requirement_ids\": [\"REQ-002\"], \"level\": \"unit\", \"purpose\": \"cancelling frees the copy for the next member\", \"preconditions\": [\"c1 reserved by m1\"], \"steps\": [\"cancel c1 by m1\", \"reserve c1 for m2\"], \"expected\": [\"c1 is active for m2\"], \"technique\": \"state transition\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      },
+      {
+        "proposal": {
+          "summary": "test_cases written.",
+          "artifact_candidates": [
+            {
+              "kind": "test_cases",
+              "media_type": "application/json",
+              "relative_path": "tests/TEST_CASES.json",
+              "workspace_path": null,
+              "content_text": "{\"cases\": [{\"case_id\": \"TC-001\", \"requirement_ids\": [\"REQ-001\"], \"level\": \"unit\", \"purpose\": \"a free copy can be reserved\", \"preconditions\": [\"empty service\"], \"steps\": [\"reserve c1 for m1\"], \"expected\": [\"c1 is active for m1\"], \"technique\": \"equivalence partition\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}, {\"case_id\": \"TC-002\", \"requirement_ids\": [\"REQ-001\"], \"level\": \"unit\", \"purpose\": \"a reserved copy cannot be reserved by another member\", \"preconditions\": [\"c1 reserved by m1\"], \"steps\": [\"reserve c1 for m2\"], \"expected\": [\"ReservationError\"], \"technique\": \"decision table\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}, {\"case_id\": \"TC-003\", \"requirement_ids\": [\"REQ-002\"], \"level\": \"unit\", \"purpose\": \"cancelling frees the copy for the next member\", \"preconditions\": [\"c1 reserved by m1\"], \"steps\": [\"cancel c1 by m1\", \"reserve c1 for m2\"], \"expected\": [\"c1 is active for m2\"], \"technique\": \"state transition\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      },
+      {
+        "proposal": {
+          "summary": "test_cases written.",
+          "artifact_candidates": [
+            {
+              "kind": "test_cases",
+              "media_type": "application/json",
+              "relative_path": "tests/TEST_CASES.json",
+              "workspace_path": null,
+              "content_text": "{\"cases\": [{\"case_id\": \"TC-001\", \"requirement_ids\": [\"REQ-001\"], \"level\": \"unit\", \"purpose\": \"a free copy can be reserved\", \"preconditions\": [\"empty service\"], \"steps\": [\"reserve c1 for m1\"], \"expected\": [\"c1 is active for m1\"], \"technique\": \"equivalence partition\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}, {\"case_id\": \"TC-002\", \"requirement_ids\": [\"REQ-001\"], \"level\": \"unit\", \"purpose\": \"a reserved copy cannot be reserved by another member\", \"preconditions\": [\"c1 reserved by m1\"], \"steps\": [\"reserve c1 for m2\"], \"expected\": [\"ReservationError\"], \"technique\": \"decision table\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}, {\"case_id\": \"TC-003\", \"requirement_ids\": [\"REQ-002\"], \"level\": \"unit\", \"purpose\": \"cancelling frees the copy for the next member\", \"preconditions\": [\"c1 reserved by m1\"], \"steps\": [\"cancel c1 by m1\", \"reserve c1 for m2\"], \"expected\": [\"c1 is active for m2\"], \"technique\": \"state transition\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}, {\"case_id\": \"TC-004\", \"requirement_ids\": [\"REQ-001\"], \"level\": \"unit\", \"purpose\": \"an empty member id is rejected and nothing is stored\", \"preconditions\": [\"empty service\"], \"steps\": [\"reserve c1 for ''\"], \"expected\": [\"ReservationError\", \"no active reservation\"], \"technique\": \"boundary partition\", \"automation\": \"automated\", \"recipe_id\": \"pytest\"}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      }
+    ],
+    "operation:testing.design_bench": {
+      "proposal": {
+        "summary": "bench_design written.",
+        "artifact_candidates": [
+          {
+            "kind": "bench_design",
+            "media_type": "text/markdown",
+            "relative_path": "tests/BENCH_DESIGN.md",
+            "workspace_path": null,
+            "content_text": "# Bench design\n\n## Entry point\nimport ReservationService from reservation.py\n\n## Environment and dependencies\npython, pytest\n\n## Setup, readiness, reset and teardown\nfresh service per test\n\n## Fixtures and controlled doubles\nnone\n\n## Instrumentation and reports\npytest -v\n\n## Timeouts and resource bounds\n60 s\n\n## Recipes\npytest\n\n## Case mapping\ntest_tc_<nnn>_* realises TC-<nnn>\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:testing.analyze": [
+      {
+        "proposal": {
+          "summary": "TC-003 failed: cancelled copies stay blocked (product defect DEF-001).",
+          "artifact_candidates": [
+            {
+              "kind": "defect_report",
+              "media_type": "text/markdown",
+              "relative_path": "tests/DEFECTS.md",
+              "workspace_path": null,
+              "content_text": "# Defects\n\n## Summary\nTC-001, TC-002 passed; TC-003 failed.\n\n## Defects\nDEF-001 (major): a cancelled copy can never be reserved again (REQ-002).\n\n## Bench problems\nnone\n\n## Residual risk\nnone beyond DEF-001\n"
+            },
+            {
+              "kind": "defect",
+              "media_type": "application/json",
+              "relative_path": "tests/defects/DEF-001.json",
+              "workspace_path": null,
+              "content_text": "{\"schema_version\": \"1.0\", \"defect_id\": \"DEF-001\", \"severity\": \"major\", \"source_ref\": @DOC:impl-code-candidate-snapshot@, \"requirement_ids\": [\"REQ-002\"], \"execution_refs\": [@REF:execution_record@], \"reproduction_steps\": [\"reserve c1 for m1\", \"cancel c1 by m1\", \"reserve c1 for m2\"], \"expected\": \"c1 becomes active for m2\", \"observed\": \"ReservationError: copy c1 already reserved (TC-003 failed)\", \"suggested_owner\": \"implementation\"}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      },
+      {
+        "proposal": {
+          "summary": "All cases passed; no defect.",
+          "artifact_candidates": [
+            {
+              "kind": "defect_report",
+              "media_type": "text/markdown",
+              "relative_path": "tests/DEFECTS.md",
+              "workspace_path": null,
+              "content_text": "# Defects\n\n## Summary\nTC-001, TC-002, TC-003 passed on the corrected candidate.\n\n## Defects\nnone\n\n## Bench problems\nnone\n\n## Residual risk\nnone\n"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      }
+    ],
+    "operation:testing.assess_release": [
+      {
+        "proposal": {
+          "summary": "test_report written.",
+          "artifact_candidates": [
+            {
+              "kind": "test_report",
+              "media_type": "text/markdown",
+              "relative_path": "TEST_REPORT.md",
+              "workspace_path": null,
+              "content_text": "# Test report\n\n## Candidate\nthe delivered candidate snapshot\n\n## Scope and plan\nTC-001..TC-003\n\n## Results\nTC-001 passed, TC-002 passed, TC-003 failed\n\n## Defects\nDEF-001 (major)\n\n## Known limitations and instability\nnone\n\n## Recommendation\nHOLD: DEF-001 must be repaired and re-tested.\n"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      },
+      {
+        "proposal": {
+          "summary": "test_report written.",
+          "artifact_candidates": [
+            {
+              "kind": "test_report",
+              "media_type": "text/markdown",
+              "relative_path": "TEST_REPORT.md",
+              "workspace_path": null,
+              "content_text": "# Test report\n\n## Candidate\nthe corrected candidate snapshot\n\n## Scope and plan\nTC-001..TC-003\n\n## Results\nTC-001 passed, TC-002 passed, TC-003 passed\n\n## Defects\nnone open\n\n## Known limitations and instability\nnone\n\n## Recommendation\nRELEASE: every case executed and passed.\n"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      }
+    ],
+    "operation:testing.prepare_handoff": {
+      "proposal": {
+        "summary": "TEST_REPORT.md assembled.",
+        "artifact_candidates": [
+          {
+            "kind": "test_report",
+            "media_type": "text/markdown",
+            "relative_path": "TEST_REPORT.md",
+            "workspace_path": null,
+            "content_text": "# Test report\n\n## Candidate\nsee the release assessment\n\n## Results\nsee the per-case verdicts in the execution report\n\n## Recommendation\nas assessed\n\n## Deployment and rollback requirements\nnone\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:maintenance.plan_work": [
+      {
+        "proposal": {
+          "summary": "maintenance leader proposes 6 tasks.",
+          "artifact_candidates": [
+            {
+              "kind": "task_graph",
+              "media_type": "application/json",
+              "relative_path": "plans/task-graph.json",
+              "workspace_path": null,
+              "content_text": "{\"tasks\": [{\"cycle_id\": \"cycle-001\", \"task_id\": \"maint-triage\", \"team_id\": \"maintenance\", \"agent_instance_id\": \"maintenance-maint-triage\", \"operation\": \"maintenance.triage\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"maint-triage\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"triage_note\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"maint-reproduce\", \"team_id\": \"maintenance\", \"agent_instance_id\": \"maintenance-maint-reproduce\", \"operation\": \"maintenance.reproduce\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"maint-triage\"], \"parameters\": {\"objective\": \"maint-reproduce\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"reproduction_report\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"maint-impact\", \"team_id\": \"maintenance\", \"agent_instance_id\": \"maintenance-maint-impact\", \"operation\": \"maintenance.analyze_impact\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"maint-triage\", \"maint-reproduce\"], \"parameters\": {\"objective\": \"maint-impact\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"impact_analysis\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"maint-change\", \"team_id\": \"maintenance\", \"agent_instance_id\": \"maintenance-maint-change\", \"operation\": \"maintenance.propose_change\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"maint-impact\"], \"parameters\": {\"objective\": \"maint-change\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"change_spec\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"maint-route\", \"team_id\": \"maintenance\", \"agent_instance_id\": \"maintenance-maint-route\", \"operation\": \"maintenance.route_rework\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"maint-change\"], \"parameters\": {\"objective\": \"maint-route\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"rework_package\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"maint-handoff\", \"team_id\": \"maintenance\", \"agent_instance_id\": \"maintenance-maint-handoff\", \"operation\": \"maintenance.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"maint-route\"], \"parameters\": {\"objective\": \"maint-handoff\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      },
+      {
+        "proposal": {
+          "summary": "maintenance leader proposes 2 tasks.",
+          "artifact_candidates": [
+            {
+              "kind": "task_graph",
+              "media_type": "application/json",
+              "relative_path": "plans/task-graph.json",
+              "workspace_path": null,
+              "content_text": "{\"tasks\": [{\"cycle_id\": \"cycle-001\", \"task_id\": \"maint-closure-r2\", \"team_id\": \"maintenance\", \"agent_instance_id\": \"maintenance-maint-closure-r2\", \"operation\": \"maintenance.verify_closure\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [], \"parameters\": {\"objective\": \"maint-closure-r2\", \"scope_ids\": [], \"requested_artifact_kinds\": [\"maintenance_report\"], \"diagram_request\": null}}, {\"cycle_id\": \"cycle-001\", \"task_id\": \"maint-handoff-r2\", \"team_id\": \"maintenance\", \"agent_instance_id\": \"maintenance-maint-handoff-r2\", \"operation\": \"maintenance.prepare_handoff\", \"operation_version\": 1, \"input_deliveries\": [\"@INBOX@\"], \"input_refs\": [], \"depends_on\": [\"maint-closure-r2\"], \"parameters\": {\"objective\": \"maint-handoff-r2\", \"scope_ids\": [], \"requested_artifact_kinds\": [], \"diagram_request\": null}}]}"
+            }
+          ],
+          "findings": [],
+          "questions": [],
+          "suggested_next_operations": []
+        }
+      }
+    ],
+    "operation:maintenance.triage": {
+      "proposal": {
+        "summary": "triage_note written.",
+        "artifact_candidates": [
+          {
+            "kind": "triage_note",
+            "media_type": "text/markdown",
+            "relative_path": "maintenance/TRIAGE.md",
+            "workspace_path": null,
+            "content_text": "# Triage\n\n## Affected release\nrelease-001 (candidate impl-code-r2-candidate-snapshot@1)\n\n## Symptom or request\nA reservation with an empty member id is accepted (simulated operator report).\n\n## Evidence\nThe request memo; no execution record covers this input yet. Simulated observation, labelled as such.\n\n## Urgency\nmedium\n\n## Classification\ncorrective: REQ-001 implies a member; the validation is missing.\n\n## Open questions\nnone\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:maintenance.reproduce": {
+      "proposal": {
+        "summary": "reproduction_report written.",
+        "artifact_candidates": [
+          {
+            "kind": "reproduction_report",
+            "media_type": "text/markdown",
+            "relative_path": "maintenance/REPRODUCTION.md",
+            "workspace_path": null,
+            "content_text": "# Reproduction\n\n## Target\nrelease-001\n\n## Steps\n1. reserve c1 for '' 2. observe active()\n\n## Observed\nNot executed here; the delivered records do not cover an empty member id.\n\n## Uncertainty\nUnconfirmed until Testing adds a case (TC-004).\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:maintenance.analyze_impact": {
+      "proposal": {
+        "summary": "impact_analysis written.",
+        "artifact_candidates": [
+          {
+            "kind": "impact_analysis",
+            "media_type": "application/json",
+            "relative_path": "maintenance/IMPACT.json",
+            "workspace_path": null,
+            "content_text": "{\"earliest_owner\": \"implementation\", \"classification\": \"corrective\", \"affected\": [{\"artifact_id\": \"impl-code-r2-candidate-snapshot\", \"revision\": 1, \"reason\": \"reserve() stores reservations without validating the member id\"}], \"requirement_ids\": [\"REQ-001\"], \"rationale\": \"requirements and design already imply a member; only the implementation lacks the validation, so the change returns to Implementation\", \"revalidation\": [\"new candidate from implementation\", \"bench rerun with a new case TC-004\", \"new release\"]}"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:maintenance.propose_change": {
+      "proposal": {
+        "summary": "change_spec written.",
+        "artifact_candidates": [
+          {
+            "kind": "change_spec",
+            "media_type": "text/markdown",
+            "relative_path": "CHANGE_SPEC.md",
+            "workspace_path": null,
+            "content_text": "# Change spec CR-001\n\n## Motivation\nEmpty member ids are accepted (request memo).\n\n## Reproduction\nreserve c1 for '' succeeds.\n\n## Impact\nimpl-code-r2-candidate-snapshot@1: reserve() lacks validation.\n\n## Earliest affected stage\nimplementation\n\n## Scope\nreject empty or blank member ids in reserve(); nothing else changes.\n\n## Alternatives considered\nvalidate at the HTTP layer only: rejected, the service is the boundary.\n\n## Acceptance\nTC-004: reserve with '' raises ReservationError and stores nothing.\n\n## Regression and migration obligations\nrerun TC-001..TC-003; no data migration.\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:maintenance.route_rework": {
+      "proposal": {
+        "summary": "rework_package written.",
+        "artifact_candidates": [
+          {
+            "kind": "rework_package",
+            "media_type": "text/markdown",
+            "relative_path": "maintenance/REWORK_PACKAGE.md",
+            "workspace_path": null,
+            "content_text": "# Rework package\n\n## Target team\nimplementation\n\n## Contents\nCHANGE_SPEC.md, IMPACT.json, TRIAGE.md, REPRODUCTION.md, the request memo.\n\n## Revalidation\ntesting re-runs the bench with TC-004; a new release follows.\n\n## Preserved history\nrelease-001 and its evidence stay available.\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:maintenance.prepare_handoff": {
+      "proposal": {
+        "summary": "CHANGE_SPEC.md assembled.",
+        "artifact_candidates": [
+          {
+            "kind": "change_spec",
+            "media_type": "text/markdown",
+            "relative_path": "CHANGE_SPEC.md",
+            "workspace_path": null,
+            "content_text": "# Change spec CR-001\n\n## Motivation\nEmpty member ids are accepted (request memo).\n\n## Reproduction\nreserve c1 for '' succeeds.\n\n## Impact\nimpl-code-r2-candidate-snapshot@1: reserve() lacks validation.\n\n## Earliest affected stage\nimplementation\n\n## Scope\nreject empty or blank member ids in reserve(); nothing else changes.\n\n## Alternatives considered\nvalidate at the HTTP layer only: rejected, the service is the boundary.\n\n## Acceptance\nTC-004: reserve with '' raises ReservationError and stores nothing.\n\n## Regression and migration obligations\nrerun TC-001..TC-003; no data migration.\n\n## Closure\nsee MAINTENANCE_REPORT.md when the cycle returns\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    },
+    "operation:maintenance.verify_closure": {
+      "proposal": {
+        "summary": "maintenance_report written.",
+        "artifact_candidates": [
+          {
+            "kind": "maintenance_report",
+            "media_type": "text/markdown",
+            "relative_path": "MAINTENANCE_REPORT.md",
+            "workspace_path": null,
+            "content_text": "# Maintenance report CR-001\n\n## Request\nEmpty member ids accepted.\n\n## Delivered revisions\nimpl-code-r3-candidate-snapshot@1, bench test-bench-r3-candidate-snapshot@1.\n\n## Observed verification\nTC-001..TC-004 passed per the execution records of test-execute-r3.\n\n## Release notes\nReservations now require a member id.\n\n## Known issues and limitations\nEvidence is nonconforming (development isolation).\n\n## Closure\nclosed: release-002 supersedes release-001.\n"
+          }
+        ],
+        "findings": [],
+        "questions": [],
+        "suggested_next_operations": []
+      }
+    }
+  },
+  "coding": {
+    "task:impl-code": {
+      "summary": "Reservation module and tests written.",
+      "files": {
+        "reservation.py": "\"\"\"Reservation service (REQ-001, REQ-002).\"\"\"\n\n\nclass ReservationError(Exception):\n    pass\n\n\nclass ReservationService:\n    def __init__(self) -> None:\n        self._active: dict[str, str] = {}\n        self._blocked: set[str] = set()\n\n    def reserve(self, copy_id: str, member_id: str) -> None:\n        if copy_id in self._active or copy_id in self._blocked:\n            raise ReservationError(f\"copy {copy_id} already reserved\")\n        self._active[copy_id] = member_id\n\n    def cancel(self, copy_id: str, member_id: str) -> None:\n        if self._active.get(copy_id) != member_id:\n            raise ReservationError(\"not your reservation\")\n        del self._active[copy_id]\n        self._blocked.add(copy_id)  # defect: a cancelled copy can never be reserved again\n\n    def active(self) -> dict[str, str]:\n        return dict(self._active)\n",
+        "test_reservation.py": "import pytest\n\nfrom reservation import ReservationError, ReservationService\n\n\ndef test_reserve_then_conflict():\n    s = ReservationService()\n    s.reserve('c1', 'm1')\n    with pytest.raises(ReservationError):\n        s.reserve('c1', 'm2')\n\n\ndef test_cancel_only_own():\n    s = ReservationService()\n    s.reserve('c1', 'm1')\n    with pytest.raises(ReservationError):\n        s.cancel('c1', 'm2')\n    s.cancel('c1', 'm1')\n    assert s.active() == {}\n"
+      }
+    },
+    "task:impl-code-r2": {
+      "summary": "Repair DEF-001: cancelling a copy frees it for the next member.",
+      "files": {
+        "reservation.py": "\"\"\"Reservation service (REQ-001, REQ-002).\"\"\"\n\n\nclass ReservationError(Exception):\n    pass\n\n\nclass ReservationService:\n    def __init__(self) -> None:\n        self._active: dict[str, str] = {}\n\n    def reserve(self, copy_id: str, member_id: str) -> None:\n        if copy_id in self._active:\n            raise ReservationError(f\"copy {copy_id} already reserved\")\n        self._active[copy_id] = member_id\n\n    def cancel(self, copy_id: str, member_id: str) -> None:\n        if self._active.get(copy_id) != member_id:\n            raise ReservationError(\"not your reservation\")\n        del self._active[copy_id]\n\n    def active(self) -> dict[str, str]:\n        return dict(self._active)\n"
+      }
+    },
+    "task:test-bench": {
+      "summary": "Bench written: one test per case.",
+      "files": {
+        "test_bench_tc.py": "\"\"\"Testbench for the reservation service; one test per case id (TC-001..TC-003).\"\"\"\nimport pytest\n\nfrom reservation import ReservationError, ReservationService\n\n\ndef test_tc_001_reserve_free_copy():\n    s = ReservationService()\n    s.reserve(\"c1\", \"m1\")\n    assert s.active() == {\"c1\": \"m1\"}\n\n\ndef test_tc_002_conflict_on_reserved_copy():\n    s = ReservationService()\n    s.reserve(\"c1\", \"m1\")\n    with pytest.raises(ReservationError):\n        s.reserve(\"c1\", \"m2\")\n\n\ndef test_tc_003_cancel_frees_copy():\n    s = ReservationService()\n    s.reserve(\"c1\", \"m1\")\n    s.cancel(\"c1\", \"m1\")\n    s.reserve(\"c1\", \"m2\")\n    assert s.active() == {\"c1\": \"m2\"}\n"
+      }
+    },
+    "task:test-bench-r2": {
+      "summary": "Bench rebuilt for the corrected candidate.",
+      "files": {
+        "test_bench_tc.py": "\"\"\"Testbench for the reservation service; one test per case id (TC-001..TC-003).\"\"\"\nimport pytest\n\nfrom reservation import ReservationError, ReservationService\n\n\ndef test_tc_001_reserve_free_copy():\n    s = ReservationService()\n    s.reserve(\"c1\", \"m1\")\n    assert s.active() == {\"c1\": \"m1\"}\n\n\ndef test_tc_002_conflict_on_reserved_copy():\n    s = ReservationService()\n    s.reserve(\"c1\", \"m1\")\n    with pytest.raises(ReservationError):\n        s.reserve(\"c1\", \"m2\")\n\n\ndef test_tc_003_cancel_frees_copy():\n    s = ReservationService()\n    s.reserve(\"c1\", \"m1\")\n    s.cancel(\"c1\", \"m1\")\n    s.reserve(\"c1\", \"m2\")\n    assert s.active() == {\"c1\": \"m2\"}\n"
+      }
+    },
+    "task:impl-code-r3": {
+      "summary": "CR-001 applied: an empty member id is rejected before anything is stored.",
+      "files": {
+        "reservation.py": "\"\"\"Reservation service (REQ-001, REQ-002).\"\"\"\n\n\nclass ReservationError(Exception):\n    pass\n\n\nclass ReservationService:\n    def __init__(self) -> None:\n        self._active: dict[str, str] = {}\n\n    def reserve(self, copy_id: str, member_id: str) -> None:\n        if not member_id or not member_id.strip():\n            raise ReservationError(\"a reservation needs a member id\")  # CR-001 (REQ-001)\n        if copy_id in self._active:\n            raise ReservationError(f\"copy {copy_id} already reserved\")\n        self._active[copy_id] = member_id\n\n    def cancel(self, copy_id: str, member_id: str) -> None:\n        if self._active.get(copy_id) != member_id:\n            raise ReservationError(\"not your reservation\")\n        del self._active[copy_id]\n\n    def active(self) -> dict[str, str]:\n        return dict(self._active)\n"
+      }
+    },
+    "task:test-bench-r3": {
+      "summary": "Bench extended with TC-004 for CR-001.",
+      "files": {
+        "test_bench_tc.py": "\"\"\"Testbench for the reservation service; one test per case id (TC-001..TC-003).\"\"\"\nimport pytest\n\nfrom reservation import ReservationError, ReservationService\n\n\ndef test_tc_001_reserve_free_copy():\n    s = ReservationService()\n    s.reserve(\"c1\", \"m1\")\n    assert s.active() == {\"c1\": \"m1\"}\n\n\ndef test_tc_002_conflict_on_reserved_copy():\n    s = ReservationService()\n    s.reserve(\"c1\", \"m1\")\n    with pytest.raises(ReservationError):\n        s.reserve(\"c1\", \"m2\")\n\n\ndef test_tc_003_cancel_frees_copy():\n    s = ReservationService()\n    s.reserve(\"c1\", \"m1\")\n    s.cancel(\"c1\", \"m1\")\n    s.reserve(\"c1\", \"m2\")\n    assert s.active() == {\"c1\": \"m2\"}\n\n\ndef test_tc_004_empty_member_rejected():\n    s = ReservationService()\n    with pytest.raises(ReservationError):\n        s.reserve(\"c1\", \"\")\n    assert s.active() == {}\n"
+      }
+    }
+  }
+}

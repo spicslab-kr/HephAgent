@@ -1,0 +1,153 @@
+{
+  "package": "SDLC_Implementation_Handoff",
+  "version": "1.0.0-design",
+  "hash_algorithm": "SHA-256",
+  "scope": "All package files except this manifest; validates integrity, not authorship.",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "size_bytes": 3500,
+      "sha256": "4b2122b797e5c13adb5417358079c92f04fa8a9f8002fae14b69b7fb85e57cb6"
+    },
+    {
+      "path": "config/project.example.yaml",
+      "size_bytes": 2924,
+      "sha256": "c6a1bc3d84760a2870965e86fcb7e98641e2955d310659d94770df097eaddbb6"
+    },
+    {
+      "path": "contracts/operations.json",
+      "size_bytes": 101645,
+      "sha256": "e40c10d699e41fa5f051cd37aec408377b0ad2862a047a4ce2152d3149948047"
+    },
+    {
+      "path": "contracts/sdlc.schema.json",
+      "size_bytes": 54607,
+      "sha256": "c9be9d5004870f459f48c606f4e1ee565f9c9e4eca52e3450f14a1c76f27f0cc"
+    },
+    {
+      "path": "contracts/state.sql",
+      "size_bytes": 20514,
+      "sha256": "f793ed556c916b21e5f184c829f90329b61833389873f5ecc0d38883a83fffd5"
+    },
+    {
+      "path": "diagrams/01_six_teams.mmd",
+      "size_bytes": 917,
+      "sha256": "4f7c76c4ee3242d34169346ee340e020d45369e34ccfdf8696cddb0820f44818"
+    },
+    {
+      "path": "diagrams/02_handoff_sequence.mmd",
+      "size_bytes": 691,
+      "sha256": "7f8e178e6b80ea280dbc3baace4fa5dcfc8ba1b5345f2638575ddb5c75794e9d"
+    },
+    {
+      "path": "diagrams/03_task_states.mmd",
+      "size_bytes": 1079,
+      "sha256": "b4ccf4c53014226faf1fae329914c8cb34d7b8c9dc445232974f0390c346d7ba"
+    },
+    {
+      "path": "docs/01_PROJECT_PLAN.md",
+      "size_bytes": 9678,
+      "sha256": "d1e0c4c3f99d8bb3e6e3d305584b57231b6e8d3b9078aa7b9dbe0c0b4962312c"
+    },
+    {
+      "path": "docs/02_REQUIREMENTS.md",
+      "size_bytes": 12919,
+      "sha256": "365d40ec95bf857bb9f364b3eafdbbb62facd162fd1203633cb0941fcb081ebd"
+    },
+    {
+      "path": "docs/03_ARCHITECTURE_AND_DESIGN.md",
+      "size_bytes": 16266,
+      "sha256": "2bc4c7e10b7aa87bac82761ff14e90961b8c2e820658e5d8676a4a03576875b9"
+    },
+    {
+      "path": "docs/04_TEAM_SPECIFICATIONS.md",
+      "size_bytes": 29039,
+      "sha256": "d20b765c1045ec45f16608ee6213fe8873f4374a0985eb3eb1abe3b270bb2f4a"
+    },
+    {
+      "path": "docs/05_BACKENDS_AND_CONNECTIONS.md",
+      "size_bytes": 20269,
+      "sha256": "93e86ee3f773813ae98019549a73c14d4d3e18993aa08abe8fe431e5f6f9ef50"
+    },
+    {
+      "path": "docs/06_EXECUTION_AND_RECOVERY.md",
+      "size_bytes": 22111,
+      "sha256": "991ffb59489cf5ed7e72df0725d127c5c8e0d665ee3b292c929cffdd828ea297"
+    },
+    {
+      "path": "docs/07_CONTRACTS_AND_SERVICE_INTERFACES.md",
+      "size_bytes": 16697,
+      "sha256": "51305a58435493673351c2ff8f6cd13537a5366f204b3b3ccfc89741eb91ca94"
+    },
+    {
+      "path": "docs/08_VERIFICATION_AND_ACCEPTANCE.md",
+      "size_bytes": 18387,
+      "sha256": "88c82b1ae10d930400815736a07a4987039596aa6a3721cbd5f37c43084d6a72"
+    },
+    {
+      "path": "docs/09_IMPLEMENTATION_PLAN.md",
+      "size_bytes": 12161,
+      "sha256": "311a5d16b0fefcbc812ee5690463ad363fd2cc91777ec5255151478566ff3512"
+    },
+    {
+      "path": "examples/diagram-request.json",
+      "size_bytes": 523,
+      "sha256": "b76087df8e46d947ef40cee62026be139c720991b4020eb6915d83eeba9ad7ac"
+    },
+    {
+      "path": "examples/interrupted-checkpoint.json",
+      "size_bytes": 1338,
+      "sha256": "0580076aae72499c40e14d79ce297b3aff13384bc51578b65484e41e4f054b7b"
+    },
+    {
+      "path": "examples/minimal-cycle.json",
+      "size_bytes": 28249,
+      "sha256": "39c0e74cbe7a61923d2f1f8aba1b9561c4575a6f292388158a6c916ca4ffb7e8"
+    },
+    {
+      "path": "examples/quota-task-result.json",
+      "size_bytes": 883,
+      "sha256": "01f1290d69b61bd60b2991d8ec1fba7708896139da2d26d78fe1af1a617a4391"
+    },
+    {
+      "path": "examples/specification.md",
+      "size_bytes": 1078,
+      "sha256": "d71e0ee03688f3e7c6bc8c711e27ebd38a4741142e6cc8cda6af78061341d320"
+    },
+    {
+      "path": "examples/stale-delivery.json",
+      "size_bytes": 1485,
+      "sha256": "bb708c53fb990842922f0a909803985f3c41278acaac1f8c88fc8f877ac50f68"
+    },
+    {
+      "path": "IMPLEMENTATION_GUIDE.md",
+      "size_bytes": 160969,
+      "sha256": "bbc47e16e8de8a7be99289d3ad00e303abb0656627aecfa4d983e529c1d39525"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 4862,
+      "sha256": "cff0e6a3af57d584474dafb6b1f48f6a47802c8a29617bf6a983061581b34aa1"
+    },
+    {
+      "path": "templates/stage-handoff.md",
+      "size_bytes": 1287,
+      "sha256": "95dc14f8fb3869de855289d3b38a3296d0cecbef3191104b705352b59cb3b6e6"
+    },
+    {
+      "path": "templates/task-brief.md",
+      "size_bytes": 971,
+      "sha256": "f8fee550a766e52953cb99ae7d448cbe68732d6ef6d475ae6787cf7241e5e077"
+    },
+    {
+      "path": "tools/validate_package.py",
+      "size_bytes": 26918,
+      "sha256": "151083c5648d09ec6582f303abadc662ce64176c80dfac4484ce395feb2a9d2e"
+    },
+    {
+      "path": "VALIDATION_REPORT.json",
+      "size_bytes": 1700,
+      "sha256": "7290d799a5fc796222c0b09a5cbfc5ef5808cb0cf10fc370137a10fd2347af9d"
+    }
+  ]
+}

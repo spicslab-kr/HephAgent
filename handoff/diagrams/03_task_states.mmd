@@ -1,0 +1,29 @@
+stateDiagram-v2
+    [*] --> pending
+    pending --> running: prerequisites satisfied
+    pending --> needs_input: missing decision or capability
+    pending --> cancelled
+    running --> completed: validated commit
+    running --> retry_wait: safe transient failure
+    running --> paused: quota or recoverable block
+    running --> needs_input: intervention
+    running --> interrupted: uncertain completion
+    running --> failed: terminal failure
+    running --> cancelled: stopped and reconciled
+    retry_wait --> pending: backoff elapsed
+    retry_wait --> paused: retry budget exhausted
+    retry_wait --> cancelled
+    paused --> pending: condition restored
+    paused --> needs_input
+    paused --> cancelled
+    needs_input --> pending: decision recorded
+    needs_input --> cancelled
+    interrupted --> completed: completion confirmed
+    interrupted --> pending: safe replay established
+    interrupted --> paused
+    interrupted --> needs_input
+    interrupted --> failed
+    interrupted --> cancelled
+    completed --> [*]
+    failed --> [*]
+    cancelled --> [*]

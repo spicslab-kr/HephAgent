@@ -1,0 +1,32 @@
+flowchart TD
+  subgraph P[Planning team]
+    PL[Planning leader] --> PW[Planning workers]
+    PW --> PO[Project plan package]
+  end
+  subgraph R[Requirements team]
+    RL[Requirements leader] --> RW[Requirements workers]
+    RW --> RO[Requirements package]
+  end
+  subgraph D[Design team]
+    DL[Design leader] --> DW[Design workers]
+    DW --> DO[Design package]
+  end
+  subgraph I[Implementation team]
+    IL[Implementation leader] --> IW[Implementation workers]
+    IW --> IO[Candidate package]
+  end
+  subgraph T[Testing team]
+    TL[Testing leader] --> TW[Testing workers]
+    TW --> TO[Verification package]
+  end
+  subgraph M[Maintenance team]
+    ML[Maintenance leader] --> MW[Maintenance workers]
+    MW --> MO[Maintenance package]
+  end
+  PO -->|Delivery| RL
+  RO -->|Delivery| DL
+  DO -->|Delivery| IL
+  IO -->|Delivery| TL
+  TO -->|Delivery| ML
+  TO -. Defect package .-> IL
+  MO -. Change package .-> RL

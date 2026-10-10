@@ -1,0 +1,846 @@
+{
+  "schema_version": "1.0",
+  "fixture_mode": true,
+  "project_id": "library-reservation-demo",
+  "payloads": {
+    "payloads/00-participant.md": "# Brief\nCreate a local library reservation demonstration. 명세서 input fixture.\n",
+    "payloads/01-planning.md": "# Plan\nScope: reserve one available title. Synthetic fixture; estimates unknown.\n",
+    "payloads/02-requirements.md": "# Requirements\nREQ-001: Reject a second active reservation for the same copy.\n",
+    "payloads/03-design.md": "# Design\nOne transactional reservation service; duplicate reservation returns a conflict.\n",
+    "payloads/04-implementation.md": "# Candidate manifest\nFixture only. No executable application supplied by this fixture.\n",
+    "payloads/05-testing.md": "# Test report\nNOT RUN. Fixture transport example; no release approval.\n",
+    "payloads/06-maintenance.md": "# Maintenance request\nPropose reservation expiry. Requires requirements revision; not implemented.\n"
+  },
+  "artifacts": [
+    {
+      "schema_version": "1.0",
+      "project_id": "library-reservation-demo",
+      "artifact_id": "a-participant",
+      "owner_team": "participant",
+      "revision": 1,
+      "kind": "brief",
+      "media_type": "text/markdown",
+      "relative_path": "payloads/00-participant.md",
+      "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5",
+      "size_bytes": 83,
+      "origin": "fixture",
+      "created_by_task": null,
+      "created_at": "2026-10-09T00:00:00Z",
+      "depends_on": []
+    },
+    {
+      "schema_version": "1.0",
+      "project_id": "library-reservation-demo",
+      "artifact_id": "a-planning",
+      "owner_team": "planning",
+      "revision": 1,
+      "kind": "project_plan",
+      "media_type": "text/markdown",
+      "relative_path": "payloads/01-planning.md",
+      "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c",
+      "size_bytes": 81,
+      "origin": "fixture",
+      "created_by_task": null,
+      "created_at": "2026-10-09T00:00:00Z",
+      "depends_on": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "project_id": "library-reservation-demo",
+      "artifact_id": "a-requirements",
+      "owner_team": "requirements",
+      "revision": 1,
+      "kind": "requirements",
+      "media_type": "text/markdown",
+      "relative_path": "payloads/02-requirements.md",
+      "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79",
+      "size_bytes": 78,
+      "origin": "fixture",
+      "created_by_task": null,
+      "created_at": "2026-10-09T00:00:00Z",
+      "depends_on": [
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "project_id": "library-reservation-demo",
+      "artifact_id": "a-design",
+      "owner_team": "design",
+      "revision": 1,
+      "kind": "design",
+      "media_type": "text/markdown",
+      "relative_path": "payloads/03-design.md",
+      "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d",
+      "size_bytes": 90,
+      "origin": "fixture",
+      "created_by_task": null,
+      "created_at": "2026-10-09T00:00:00Z",
+      "depends_on": [
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "project_id": "library-reservation-demo",
+      "artifact_id": "a-implementation",
+      "owner_team": "implementation",
+      "revision": 1,
+      "kind": "source_snapshot",
+      "media_type": "text/markdown",
+      "relative_path": "payloads/04-implementation.md",
+      "sha256": "8721950968d23618f0680573c8074175c27d4da252074b01ef2b1cc81d54bf47",
+      "size_bytes": 87,
+      "origin": "fixture",
+      "created_by_task": null,
+      "created_at": "2026-10-09T00:00:00Z",
+      "depends_on": [
+        {
+          "artifact_id": "a-design",
+          "revision": 1,
+          "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "project_id": "library-reservation-demo",
+      "artifact_id": "a-testing",
+      "owner_team": "testing",
+      "revision": 1,
+      "kind": "verification_report",
+      "media_type": "text/markdown",
+      "relative_path": "payloads/05-testing.md",
+      "sha256": "57b856f852ddbe4a883f2b09cd4d4577ffd26c121e93b0215e996cccaa44ea22",
+      "size_bytes": 71,
+      "origin": "fixture",
+      "created_by_task": null,
+      "created_at": "2026-10-09T00:00:00Z",
+      "depends_on": [
+        {
+          "artifact_id": "a-implementation",
+          "revision": 1,
+          "sha256": "8721950968d23618f0680573c8074175c27d4da252074b01ef2b1cc81d54bf47"
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "project_id": "library-reservation-demo",
+      "artifact_id": "a-maintenance",
+      "owner_team": "maintenance",
+      "revision": 1,
+      "kind": "change_request",
+      "media_type": "text/markdown",
+      "relative_path": "payloads/06-maintenance.md",
+      "sha256": "772358614589392f896c77986c7a3289471a05f01321e30aec16f07ec21898a7",
+      "size_bytes": 99,
+      "origin": "fixture",
+      "created_by_task": null,
+      "created_at": "2026-10-09T00:00:00Z",
+      "depends_on": [
+        {
+          "artifact_id": "a-testing",
+          "revision": 1,
+          "sha256": "57b856f852ddbe4a883f2b09cd4d4577ffd26c121e93b0215e996cccaa44ea22"
+        }
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "schema_version": "1.0",
+      "bundle_id": "b-00",
+      "project_id": "library-reservation-demo",
+      "cycle_id": "cycle-001",
+      "source_team": "participant",
+      "target_team": "planning",
+      "kind": "manual_input",
+      "baseline_id": "baseline-participant-001",
+      "input_bundle_refs": [],
+      "artifact_refs": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        }
+      ],
+      "trace_links": [],
+      "summary": "Fixture delivery participant to planning; transport acceptance is not engineering approval.",
+      "open_findings": [],
+      "decision_refs": [],
+      "next_actions": [
+        "Inspect fixture inputs; real engineering gates remain unsatisfied."
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "bundle_id": "b-01",
+      "project_id": "library-reservation-demo",
+      "cycle_id": "cycle-001",
+      "source_team": "planning",
+      "target_team": "requirements",
+      "kind": "forward",
+      "baseline_id": "baseline-planning-001",
+      "input_bundle_refs": [
+        {
+          "bundle_id": "b-00",
+          "sha256": "29f8615ce3712eb4156ae405605d649a282ffbcf4b9499835f0b0221dc0002e7"
+        }
+      ],
+      "artifact_refs": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        }
+      ],
+      "trace_links": [],
+      "summary": "Fixture delivery planning to requirements; transport acceptance is not engineering approval.",
+      "open_findings": [],
+      "decision_refs": [],
+      "next_actions": [
+        "Inspect fixture inputs; real engineering gates remain unsatisfied."
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "bundle_id": "b-02",
+      "project_id": "library-reservation-demo",
+      "cycle_id": "cycle-001",
+      "source_team": "requirements",
+      "target_team": "design",
+      "kind": "forward",
+      "baseline_id": "baseline-requirements-001",
+      "input_bundle_refs": [
+        {
+          "bundle_id": "b-01",
+          "sha256": "cad4b140d247d014c613805d44264166388735f72f0b0bf90b61c4e3fae0aeec"
+        }
+      ],
+      "artifact_refs": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        }
+      ],
+      "trace_links": [],
+      "summary": "Fixture delivery requirements to design; transport acceptance is not engineering approval.",
+      "open_findings": [],
+      "decision_refs": [],
+      "next_actions": [
+        "Inspect fixture inputs; real engineering gates remain unsatisfied."
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "bundle_id": "b-03",
+      "project_id": "library-reservation-demo",
+      "cycle_id": "cycle-001",
+      "source_team": "design",
+      "target_team": "implementation",
+      "kind": "forward",
+      "baseline_id": "baseline-design-001",
+      "input_bundle_refs": [
+        {
+          "bundle_id": "b-02",
+          "sha256": "ac8b3ae69ba77e19ea945c96b8225938d66e13df430d25ae92f8e79b8a76b040"
+        }
+      ],
+      "artifact_refs": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        },
+        {
+          "artifact_id": "a-design",
+          "revision": 1,
+          "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+        }
+      ],
+      "trace_links": [],
+      "summary": "Fixture delivery design to implementation; transport acceptance is not engineering approval.",
+      "open_findings": [],
+      "decision_refs": [],
+      "next_actions": [
+        "Inspect fixture inputs; real engineering gates remain unsatisfied."
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "bundle_id": "b-04",
+      "project_id": "library-reservation-demo",
+      "cycle_id": "cycle-001",
+      "source_team": "implementation",
+      "target_team": "testing",
+      "kind": "forward",
+      "baseline_id": "baseline-implementation-001",
+      "input_bundle_refs": [
+        {
+          "bundle_id": "b-03",
+          "sha256": "f11decbeb743866e3e7722a0e828036c55ca79fb8acf31ecfae65cb23ff971fc"
+        }
+      ],
+      "artifact_refs": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        },
+        {
+          "artifact_id": "a-design",
+          "revision": 1,
+          "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+        },
+        {
+          "artifact_id": "a-implementation",
+          "revision": 1,
+          "sha256": "8721950968d23618f0680573c8074175c27d4da252074b01ef2b1cc81d54bf47"
+        }
+      ],
+      "trace_links": [],
+      "summary": "Fixture delivery implementation to testing; transport acceptance is not engineering approval.",
+      "open_findings": [],
+      "decision_refs": [],
+      "next_actions": [
+        "Inspect fixture inputs; real engineering gates remain unsatisfied."
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "bundle_id": "b-05",
+      "project_id": "library-reservation-demo",
+      "cycle_id": "cycle-001",
+      "source_team": "testing",
+      "target_team": "maintenance",
+      "kind": "forward",
+      "baseline_id": "baseline-testing-001",
+      "input_bundle_refs": [
+        {
+          "bundle_id": "b-04",
+          "sha256": "6e6d7f6570beea2eb1c8c25d40b53e7d50c5545b7561379b808c0890e65f308b"
+        }
+      ],
+      "artifact_refs": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        },
+        {
+          "artifact_id": "a-design",
+          "revision": 1,
+          "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+        },
+        {
+          "artifact_id": "a-implementation",
+          "revision": 1,
+          "sha256": "8721950968d23618f0680573c8074175c27d4da252074b01ef2b1cc81d54bf47"
+        },
+        {
+          "artifact_id": "a-testing",
+          "revision": 1,
+          "sha256": "57b856f852ddbe4a883f2b09cd4d4577ffd26c121e93b0215e996cccaa44ea22"
+        }
+      ],
+      "trace_links": [],
+      "summary": "Fixture delivery testing to maintenance; transport acceptance is not engineering approval.",
+      "open_findings": [],
+      "decision_refs": [],
+      "next_actions": [
+        "Inspect fixture inputs; real engineering gates remain unsatisfied."
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "bundle_id": "b-06",
+      "project_id": "library-reservation-demo",
+      "cycle_id": "cycle-001",
+      "source_team": "maintenance",
+      "target_team": "requirements",
+      "kind": "change_request",
+      "baseline_id": "baseline-maintenance-001",
+      "input_bundle_refs": [
+        {
+          "bundle_id": "b-05",
+          "sha256": "c32096afa9f3cb830d91856b266c61c9955a5619535b14f9b8891be2fe509e3c"
+        }
+      ],
+      "artifact_refs": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        },
+        {
+          "artifact_id": "a-design",
+          "revision": 1,
+          "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+        },
+        {
+          "artifact_id": "a-implementation",
+          "revision": 1,
+          "sha256": "8721950968d23618f0680573c8074175c27d4da252074b01ef2b1cc81d54bf47"
+        },
+        {
+          "artifact_id": "a-testing",
+          "revision": 1,
+          "sha256": "57b856f852ddbe4a883f2b09cd4d4577ffd26c121e93b0215e996cccaa44ea22"
+        },
+        {
+          "artifact_id": "a-maintenance",
+          "revision": 1,
+          "sha256": "772358614589392f896c77986c7a3289471a05f01321e30aec16f07ec21898a7"
+        }
+      ],
+      "trace_links": [],
+      "summary": "Fixture delivery maintenance to requirements; transport acceptance is not engineering approval.",
+      "open_findings": [],
+      "decision_refs": [],
+      "next_actions": [
+        "Inspect fixture inputs; real engineering gates remain unsatisfied."
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    }
+  ],
+  "deliveries": [
+    {
+      "schema_version": "1.0",
+      "delivery_id": "d-00",
+      "project_id": "library-reservation-demo",
+      "bundle_ref": {
+        "bundle_id": "b-00",
+        "sha256": "29f8615ce3712eb4156ae405605d649a282ffbcf4b9499835f0b0221dc0002e7"
+      },
+      "from_team": "participant",
+      "to_team": "planning",
+      "expected_target_baseline": null,
+      "read_grants": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        }
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "delivery_id": "d-01",
+      "project_id": "library-reservation-demo",
+      "bundle_ref": {
+        "bundle_id": "b-01",
+        "sha256": "cad4b140d247d014c613805d44264166388735f72f0b0bf90b61c4e3fae0aeec"
+      },
+      "from_team": "planning",
+      "to_team": "requirements",
+      "expected_target_baseline": null,
+      "read_grants": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        }
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "delivery_id": "d-02",
+      "project_id": "library-reservation-demo",
+      "bundle_ref": {
+        "bundle_id": "b-02",
+        "sha256": "ac8b3ae69ba77e19ea945c96b8225938d66e13df430d25ae92f8e79b8a76b040"
+      },
+      "from_team": "requirements",
+      "to_team": "design",
+      "expected_target_baseline": null,
+      "read_grants": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        }
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "delivery_id": "d-03",
+      "project_id": "library-reservation-demo",
+      "bundle_ref": {
+        "bundle_id": "b-03",
+        "sha256": "f11decbeb743866e3e7722a0e828036c55ca79fb8acf31ecfae65cb23ff971fc"
+      },
+      "from_team": "design",
+      "to_team": "implementation",
+      "expected_target_baseline": null,
+      "read_grants": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        },
+        {
+          "artifact_id": "a-design",
+          "revision": 1,
+          "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+        }
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "delivery_id": "d-04",
+      "project_id": "library-reservation-demo",
+      "bundle_ref": {
+        "bundle_id": "b-04",
+        "sha256": "6e6d7f6570beea2eb1c8c25d40b53e7d50c5545b7561379b808c0890e65f308b"
+      },
+      "from_team": "implementation",
+      "to_team": "testing",
+      "expected_target_baseline": null,
+      "read_grants": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        },
+        {
+          "artifact_id": "a-design",
+          "revision": 1,
+          "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+        },
+        {
+          "artifact_id": "a-implementation",
+          "revision": 1,
+          "sha256": "8721950968d23618f0680573c8074175c27d4da252074b01ef2b1cc81d54bf47"
+        }
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "delivery_id": "d-05",
+      "project_id": "library-reservation-demo",
+      "bundle_ref": {
+        "bundle_id": "b-05",
+        "sha256": "c32096afa9f3cb830d91856b266c61c9955a5619535b14f9b8891be2fe509e3c"
+      },
+      "from_team": "testing",
+      "to_team": "maintenance",
+      "expected_target_baseline": null,
+      "read_grants": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        },
+        {
+          "artifact_id": "a-design",
+          "revision": 1,
+          "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+        },
+        {
+          "artifact_id": "a-implementation",
+          "revision": 1,
+          "sha256": "8721950968d23618f0680573c8074175c27d4da252074b01ef2b1cc81d54bf47"
+        },
+        {
+          "artifact_id": "a-testing",
+          "revision": 1,
+          "sha256": "57b856f852ddbe4a883f2b09cd4d4577ffd26c121e93b0215e996cccaa44ea22"
+        }
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "delivery_id": "d-06",
+      "project_id": "library-reservation-demo",
+      "bundle_ref": {
+        "bundle_id": "b-06",
+        "sha256": "ad525d4e7e67ecb21852fecab6cbbf1c60d166e7af86c5107c75b933385dec04"
+      },
+      "from_team": "maintenance",
+      "to_team": "requirements",
+      "expected_target_baseline": null,
+      "read_grants": [
+        {
+          "artifact_id": "a-participant",
+          "revision": 1,
+          "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+        },
+        {
+          "artifact_id": "a-planning",
+          "revision": 1,
+          "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+        },
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        },
+        {
+          "artifact_id": "a-design",
+          "revision": 1,
+          "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+        },
+        {
+          "artifact_id": "a-implementation",
+          "revision": 1,
+          "sha256": "8721950968d23618f0680573c8074175c27d4da252074b01ef2b1cc81d54bf47"
+        },
+        {
+          "artifact_id": "a-testing",
+          "revision": 1,
+          "sha256": "57b856f852ddbe4a883f2b09cd4d4577ffd26c121e93b0215e996cccaa44ea22"
+        },
+        {
+          "artifact_id": "a-maintenance",
+          "revision": 1,
+          "sha256": "772358614589392f896c77986c7a3289471a05f01321e30aec16f07ec21898a7"
+        }
+      ],
+      "created_at": "2026-10-09T00:00:00Z"
+    }
+  ],
+  "receipts": [
+    {
+      "schema_version": "1.0",
+      "receipt_id": "receipt-00",
+      "delivery_id": "d-00",
+      "project_id": "library-reservation-demo",
+      "sequence": 1,
+      "status": "accepted",
+      "reason": "Fixture transport receipt only; no engineering baseline accepted.",
+      "recorded_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "receipt_id": "receipt-01",
+      "delivery_id": "d-01",
+      "project_id": "library-reservation-demo",
+      "sequence": 1,
+      "status": "accepted",
+      "reason": "Fixture transport receipt only; no engineering baseline accepted.",
+      "recorded_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "receipt_id": "receipt-02",
+      "delivery_id": "d-02",
+      "project_id": "library-reservation-demo",
+      "sequence": 1,
+      "status": "accepted",
+      "reason": "Fixture transport receipt only; no engineering baseline accepted.",
+      "recorded_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "receipt_id": "receipt-03",
+      "delivery_id": "d-03",
+      "project_id": "library-reservation-demo",
+      "sequence": 1,
+      "status": "accepted",
+      "reason": "Fixture transport receipt only; no engineering baseline accepted.",
+      "recorded_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "receipt_id": "receipt-04",
+      "delivery_id": "d-04",
+      "project_id": "library-reservation-demo",
+      "sequence": 1,
+      "status": "accepted",
+      "reason": "Fixture transport receipt only; no engineering baseline accepted.",
+      "recorded_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "receipt_id": "receipt-05",
+      "delivery_id": "d-05",
+      "project_id": "library-reservation-demo",
+      "sequence": 1,
+      "status": "accepted",
+      "reason": "Fixture transport receipt only; no engineering baseline accepted.",
+      "recorded_at": "2026-10-09T00:00:00Z"
+    },
+    {
+      "schema_version": "1.0",
+      "receipt_id": "receipt-06",
+      "delivery_id": "d-06",
+      "project_id": "library-reservation-demo",
+      "sequence": 1,
+      "status": "accepted",
+      "reason": "Fixture transport receipt only; no engineering baseline accepted.",
+      "recorded_at": "2026-10-09T00:00:00Z"
+    }
+  ],
+  "tasks": [
+    {
+      "schema_version": "1.0",
+      "project_id": "library-reservation-demo",
+      "cycle_id": "cycle-001",
+      "task_id": "task-design-001",
+      "team_id": "design",
+      "agent_instance_id": "agent-design-interface-001",
+      "operation": "design.define_contracts",
+      "operation_version": 1,
+      "input_deliveries": [
+        "d-02"
+      ],
+      "input_refs": [
+        {
+          "artifact_id": "a-requirements",
+          "revision": 1,
+          "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+        }
+      ],
+      "depends_on": [],
+      "parameters": {
+        "objective": "Define the reservation conflict contract.",
+        "scope_ids": [
+          "REQ-001"
+        ],
+        "requested_artifact_kinds": [
+          "design"
+        ],
+        "diagram_request": null
+      },
+      "expected_output_schema": "#/$defs/WorkerProposal",
+      "backend_profile": "fixture",
+      "workspace_ref": null,
+      "limits": {
+        "max_attempts": 3,
+        "timeout_seconds": 300,
+        "max_output_tokens": 8192,
+        "max_cost_microunits": 0
+      }
+    }
+  ],
+  "results": [],
+  "notes": "All payloads are fixtures. This exercises all six teams and a maintenance return route, not actual engineering completion. Accepted receipts are not gate decisions. Embedded payload paths are labels, not package files."
+}

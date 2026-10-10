@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "task_id": "task-implementation-017",
+  "attempt_id": "attempt-017-02",
+  "outcome": "paused",
+  "artifact_refs": [],
+  "candidate_workspace_ref": "workspace-implementation-017",
+  "findings": [],
+  "questions": [],
+  "usage": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "cost_microunits": null,
+    "currency": null,
+    "measurement": "unknown"
+  },
+  "error": {
+    "category": "quota_exhausted",
+    "provider_code": "example_quota_code",
+    "message": "The configured account quota is exhausted; partial workspace preserved.",
+    "automatic_retry_now": false,
+    "retry_after_seconds": null,
+    "reset_at": null,
+    "completion_certainty": "unknown",
+    "next_action": "Reconcile the preserved workspace, restore this connection or select an approved alternative, then resume the same task.",
+    "diagnostic_ref": null
+  }
+}

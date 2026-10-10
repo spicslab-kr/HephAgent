@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "delivery_id": "d-stale-baseline-example",
+  "project_id": "library-reservation-demo",
+  "bundle_ref": {
+    "bundle_id": "b-06",
+    "sha256": "ad525d4e7e67ecb21852fecab6cbbf1c60d166e7af86c5107c75b933385dec04"
+  },
+  "from_team": "maintenance",
+  "to_team": "requirements",
+  "expected_target_baseline": "b-01",
+  "read_grants": [
+    {
+      "artifact_id": "a-participant",
+      "revision": 1,
+      "sha256": "3bbeaf1d0543e65e43c5a6ce2498f2d42bac29c4ef4e46505f62230fe7ae00e5"
+    },
+    {
+      "artifact_id": "a-planning",
+      "revision": 1,
+      "sha256": "79ff1c27c962c464bc737ca41644fec5ad5f35903d60dd7c60f06bea20fef94c"
+    },
+    {
+      "artifact_id": "a-requirements",
+      "revision": 1,
+      "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+    },
+    {
+      "artifact_id": "a-design",
+      "revision": 1,
+      "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+    },
+    {
+      "artifact_id": "a-implementation",
+      "revision": 1,
+      "sha256": "8721950968d23618f0680573c8074175c27d4da252074b01ef2b1cc81d54bf47"
+    },
+    {
+      "artifact_id": "a-testing",
+      "revision": 1,
+      "sha256": "57b856f852ddbe4a883f2b09cd4d4577ffd26c121e93b0215e996cccaa44ea22"
+    },
+    {
+      "artifact_id": "a-maintenance",
+      "revision": 1,
+      "sha256": "772358614589392f896c77986c7a3289471a05f01321e30aec16f07ec21898a7"
+    }
+  ],
+  "created_at": "2026-10-09T00:00:00Z"
+}

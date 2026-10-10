@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "checkpoint_id": "checkpoint-017-02",
+  "task_id": "task-implementation-017",
+  "attempt_id": "attempt-017-02",
+  "team_id": "implementation",
+  "created_at": "2026-10-09T00:00:00Z",
+  "fencing_generation": 2,
+  "task_graph_revision": 1,
+  "input_deliveries": [
+    "d-03"
+  ],
+  "input_refs": [
+    {
+      "artifact_id": "a-requirements",
+      "revision": 1,
+      "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+    },
+    {
+      "artifact_id": "a-design",
+      "revision": 1,
+      "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+    }
+  ],
+  "baseline_source_ref": null,
+  "candidate_source_ref": null,
+  "patch_ref": null,
+  "intermediate_refs": [],
+  "last_event_id": "event-017-019",
+  "backend_session_id": null,
+  "summary_ref": {
+    "artifact_id": "a-design",
+    "revision": 1,
+    "sha256": "f35a5fdca7b3a24d4e5772936f31b1428ec4550ae3599c5ac0ea1a8364fd631d"
+  },
+  "outstanding_questions": [
+    "Fixture checkpoint only: actual recovery must collect a task-local summary and inspect process liveness."
+  ],
+  "side_effects": [
+    {
+      "operation_id": "op-code-017",
+      "kind": "workspace_edit",
+      "external_id": null,
+      "evidence_ref": null,
+      "outcome": "unknown"
+    }
+  ],
+  "reconciliation_required": true
+}

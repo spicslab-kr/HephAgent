@@ -1,0 +1,19 @@
+# Local virtual environment and tool caches (recreate with scripts/setup.*)
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Local runtime state created by `sdlc init` (project databases, artifact stores)
+.sdlc/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+
+# Secrets never belong in the repository
+.env

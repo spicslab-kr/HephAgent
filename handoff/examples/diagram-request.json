@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "project_id": "library-reservation-demo",
+  "team_id": "requirements",
+  "requested_by": "participant",
+  "source_refs": [
+    {
+      "artifact_id": "a-requirements",
+      "revision": 1,
+      "sha256": "8910324361177907e2094b537ffbbcbb7ee453e7cc89c9ed1af5913f1fd45d79"
+    }
+  ],
+  "diagram_type": "use_case",
+  "purpose": "Show member and librarian goals and include cancellation alternatives from the 명세서.",
+  "scope_ids": [
+    "REQ-001"
+  ],
+  "preferred_renderer": "plantuml"
+}

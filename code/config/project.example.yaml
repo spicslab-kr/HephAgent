@@ -1,0 +1,90 @@
+# Proposed configuration shape, not an installed executable configuration.
+# Implement strict config validation. Replace placeholders after capability probes.
+schema_version: '1.0'
+project:
+  id: library-reservation-demo
+  mode: collaborative
+  language: en
+  fixture_mode: true
+runtime:
+  isolation: strict
+  launcher_profile: UNCONFIGURED
+  max_parallel_workers: 2
+  allow_recursive_workers: false
+  max_attempts: 3
+  automatic_provider_fallback: false
+  default_timeout_seconds: 900
+  max_output_tokens: 8192
+  daily_budget_microunits: 0 # Fixture default. Explicitly configure before live calls.
+  currency: USD
+  retry:
+    initial_seconds: 2
+    maximum_seconds: 60
+    total_elapsed_seconds: 300
+    jitter: true
+connections:
+  fixture:
+    type: fixture
+    auth: none
+    quota_scope_id: fixture
+  codex-native:
+    type: codex-cli
+    auth: native
+    executable: codex
+    model: USER_SELECTED_MODEL
+    expected_account_id: null
+    quota_scope_id: USER_DECLARED_CODEX_ACCOUNT_SCOPE
+    launcher_profile: UNCONFIGURED
+    status: capability_check_required
+  claude-native:
+    type: claude-cli
+    auth: native
+    executable: claude
+    model: USER_SELECTED_MODEL
+    expected_account_id: null
+    quota_scope_id: USER_DECLARED_CLAUDE_ACCOUNT_SCOPE
+    launcher_profile: UNCONFIGURED
+    status: capability_check_required
+  openai-api:
+    type: openai-responses
+    auth: api_key
+    credential_ref: env:OPENAI_API_KEY
+    model: USER_SELECTED_MODEL
+    quota_scope_id: USER_DECLARED_API_PROJECT_SCOPE
+  anthropic-api:
+    type: anthropic-messages
+    auth: api_key
+    credential_ref: env:ANTHROPIC_API_KEY
+    model: USER_SELECTED_MODEL
+    quota_scope_id: USER_DECLARED_API_WORKSPACE_SCOPE
+  local:
+    type: openai-compatible
+    auth: local_profile
+    base_url: http://127.0.0.1:11434/v1
+    credential_ref: null # Dummy or actual token depends on the server's auth mode.
+    model: USER_INSTALLED_MODEL_ID
+    quota_scope_id: local-machine
+    capabilities: probe
+teams:
+  planning: {brain: fixture, research: fixture}
+  requirements: {brain: fixture, research: fixture}
+  design: {brain: fixture, coding: fixture}
+  implementation: {brain: fixture, coding: fixture, execution: fixture}
+  testing: {brain: fixture, execution: fixture}
+  maintenance: {brain: fixture, execution: fixture}
+# Live suggested composition: select an API/native-supported Brain per team;
+# use codex-native for Design/Implementation CodingBackend after doctor passes.
+# A CodingBackend does not automatically implement Brain. Native-only deployments
+# must implement/probe a structured-document operation through that client too.
+imports:
+  max_file_bytes: 26214400
+  max_pdf_pages: 200
+  max_archive_expanded_bytes: 104857600
+  ocr: optional
+diagrams:
+  renderers: [mermaid, plantuml]
+  remote_includes: false
+execution:
+  network_during_tests: false
+  provider_credentials_in_target_process: false
+  dependency_preparation_requires_policy: true

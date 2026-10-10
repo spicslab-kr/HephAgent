@@ -1,0 +1,3817 @@
+{
+  "schema_version": "1.0",
+  "status": "proposed_registry_seed",
+  "notes": "The runtime must implement and test each named prerequisite policy from the team specification before enabling that operation. This registry does not itself authorize arbitrary writes or execution. Extra capabilities are determined by the selected recipe; unknown capabilities fail closed.",
+  "operations": [
+    {
+      "operation": "design.compare_options",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "design.compare_options.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.define_architecture",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "design.define_architecture.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.define_behavior",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "design.define_behavior.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.define_contracts",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "design.define_contracts.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.inspect_system",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "scoped_repository"
+      ],
+      "prerequisite_policy": "design.inspect_system.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.intake",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "design.intake.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.plan_implementation",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "design.plan_implementation.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.plan_work",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "design.plan_work.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.prepare_handoff",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "design.prepare_handoff.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.probe_feasibility",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "scoped_repository"
+      ],
+      "prerequisite_policy": "design.probe_feasibility.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.request_diagram",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "diagram_source_generation"
+      ],
+      "prerequisite_policy": "design.request_diagram.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "design.review",
+      "version": 1,
+      "owner_team": "design",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "design.review.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.check",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "isolated_execution"
+      ],
+      "prerequisite_policy": "implementation.check.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.code",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "scoped_repository"
+      ],
+      "prerequisite_policy": "implementation.code.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.developer_tests",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "scoped_repository"
+      ],
+      "prerequisite_policy": "implementation.developer_tests.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.intake",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "implementation.intake.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.integrate",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "implementation.integrate.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.plan_changes",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "implementation.plan_changes.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.plan_work",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "implementation.plan_work.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.prepare_handoff",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "implementation.prepare_handoff.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.prepare_workspace",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "scoped_repository"
+      ],
+      "prerequisite_policy": "implementation.prepare_workspace.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.request_diagram",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "diagram_source_generation"
+      ],
+      "prerequisite_policy": "implementation.request_diagram.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.review",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "implementation.review.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "implementation.review_changes",
+      "version": 1,
+      "owner_team": "implementation",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "implementation.review_changes.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.analyze_impact",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.analyze_impact.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.intake",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.intake.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.plan_work",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.plan_work.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.prepare_handoff",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.prepare_handoff.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.propose_change",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.propose_change.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.reproduce",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.reproduce.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.request_diagram",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "diagram_source_generation"
+      ],
+      "prerequisite_policy": "maintenance.request_diagram.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.review",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.review.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.route_rework",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.route_rework.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.triage",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.triage.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "maintenance.verify_closure",
+      "version": 1,
+      "owner_team": "maintenance",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "maintenance.verify_closure.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.assess_feasibility",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "planning.assess_feasibility.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.assess_risks",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "planning.assess_risks.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.frame_problem",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "planning.frame_problem.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.intake",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "planning.intake.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.plan_delivery",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "planning.plan_delivery.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.plan_work",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "planning.plan_work.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.prepare_handoff",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "planning.prepare_handoff.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.request_diagram",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "diagram_source_generation"
+      ],
+      "prerequisite_policy": "planning.request_diagram.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.research_context",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "research_or_imported_evidence"
+      ],
+      "prerequisite_policy": "planning.research_context.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "planning.review",
+      "version": 1,
+      "owner_team": "planning",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "planning.review.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.define_acceptance",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "requirements.define_acceptance.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.extract",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "requirements.extract.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.intake",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "requirements.intake.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.investigate_needs",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "research_or_imported_evidence"
+      ],
+      "prerequisite_policy": "requirements.investigate_needs.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.model_scenarios",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "requirements.model_scenarios.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.plan_work",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "requirements.plan_work.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.prepare_handoff",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "requirements.prepare_handoff.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.request_diagram",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "diagram_source_generation"
+      ],
+      "prerequisite_policy": "requirements.request_diagram.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.resolve_conflicts",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "requirements.resolve_conflicts.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.review",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "requirements.review.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "requirements.validate",
+      "version": 1,
+      "owner_team": "requirements",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "requirements.validate.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.analyze",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.analyze.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.assess_release",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.assess_release.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.derive_cases",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.derive_cases.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.design_bench",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.design_bench.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.execute",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "isolated_execution"
+      ],
+      "prerequisite_policy": "testing.execute.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.implement_bench",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.implement_bench.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.intake",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.intake.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.plan",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.plan.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.plan_work",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.plan_work.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.preflight",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.preflight.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.prepare_handoff",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.prepare_handoff.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.request_diagram",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal",
+        "diagram_source_generation"
+      ],
+      "prerequisite_policy": "testing.request_diagram.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    },
+    {
+      "operation": "testing.review",
+      "version": 1,
+      "owner_team": "testing",
+      "proposal_schema": "#/$defs/WorkerProposal",
+      "parameter_schema": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "requested_artifact_kinds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0
+          },
+          "diagram_request": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/DiagramRequest"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "objective",
+          "scope_ids",
+          "requested_artifact_kinds",
+          "diagram_request"
+        ],
+        "additionalProperties": false
+      },
+      "required_capabilities": [
+        "structured_proposal"
+      ],
+      "prerequisite_policy": "testing.review.v1",
+      "cross_team_reads": "accepted_delivery_grants_only",
+      "write_scope": "owned_task_workspace",
+      "domain_specification": "docs/04_TEAM_SPECIFICATIONS.md"
+    }
+  ]
+}

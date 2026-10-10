@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant A as Publishing team
+    participant R as Runtime
+    participant S as Durable store
+    participant B as Receiving team
+    A->>R: Propose bundle and exact artifacts
+    R->>R: Check grants, decisions and schemas
+    R->>S: Publish immutable payloads
+    R->>S: Commit manifest, envelope and outbox
+    R->>R: Validate target baseline and deduplicate
+    alt Valid delivery
+        R->>S: Append receipt and inbox entry
+        R->>B: Materialize exact granted inputs
+        B->>R: Propose own bounded task plan
+    else Invalid or stale delivery
+        R->>S: Append rejection or stale receipt
+        R-->>A: Findings through scoped runtime view
+    end

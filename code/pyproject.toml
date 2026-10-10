@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sdlc-agent-teams"
+version = "0.1.0.dev0"
+description = "Six isolated SDLC agent teams that run a software project with external LLMs, Codex and Claude Code."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "pydantic>=2.7",
+    "jsonschema>=4.21",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pypdf>=4.0", "python-docx>=1.1"]
+# Provider SDKs and importers are opt-in extras (see docs/05 in the handoff).
+openai = ["openai>=1.40"]
+# A local OpenAI-compatible server (Ollama, LM Studio, vLLM) uses the same client.
+local = ["openai>=1.40"]
+anthropic = ["anthropic>=0.34"]
+pdf = ["pypdf>=4.0"]
+docx = ["python-docx>=1.1"]
+
+[project.scripts]
+sdlc = "sdlc.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
