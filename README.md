@@ -28,7 +28,7 @@ anyone who wants to watch an SDLC happen rather than read about it.
 ![milestones](https://img.shields.io/badge/milestones-M0%E2%80%93M8%20done-brightgreen)
 ![tests](https://img.shields.io/badge/offline%20suite-passing-brightgreen)
 ![status](https://img.shields.io/badge/status-course%20alpha-yellow)
-![license](https://img.shields.io/badge/license-not%20chosen%20yet-lightgrey)
+![license](https://img.shields.io/badge/code-Apache--2.0-blue) ![docs](https://img.shields.io/badge/docs-CC%20BY%204.0-blue)
 
 ---
 
@@ -144,5 +144,9 @@ As you can guess, this repo itself was used in generating this this repo itself.
 
 ## License
 
-Not chosen yet. Until a license file is added, all rights are reserved by the author; ask
-before reusing beyond the course.
+- **Code** (`code/`): [Apache License 2.0](LICENSE). Keep the [`NOTICE`](NOTICE) file with
+  any redistribution or derivative work; it names the author and the repository.
+- **Documents** (`handoff/`, the guides, the diagrams, this page): [CC BY 4.0](LICENSE-DOCS.md).
+  Give visible credit to Kevin Nam and link this repository when you share or adapt them.
+
+Copyright 2026 Kevin Nam, SPICS Lab, Kyung Hee University.
