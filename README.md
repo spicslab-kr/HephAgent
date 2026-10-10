@@ -13,6 +13,7 @@ labels honestly what it could not prove. Built for a software-engineering course
 anyone who wants to watch an SDLC happen rather than read about it.
 
 **Author:** Kevin Nam (Kyung Hee University, SPICS lab) · **Questions:** <kvnam92310@gmail.com> · **Issues:** [GitHub issues](https://github.com/spicslab-kr/HephAgent/issues)
+**Author:** Kevin Nam (Kyung Hee University, SPICS lab) · **Questions:** <kvnam@khu.ac.kr> · **Issues:** [GitHub issues](https://github.com/spicslab-kr/software_engineering_tool/issues)
 
 ![python](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)
 ![brains](https://img.shields.io/badge/brains-Claude%20Code%20%C2%B7%20Codex%20CLI%20%C2%B7%20local-8A2BE2)
@@ -119,9 +120,8 @@ clients are never part of the default tests.
 
 ## Acknowledgements
 
-The design handoff in `handoff/` was produced with ChatGPT and Codex; the implementation in
-`code/` with Claude Code, under the author's direction. Both are recorded as such in the
-work log.
+I highly thank Codex and Claude Code to find un-debuggable issues from my code. Over half of the codes were modified by them during the debugging process.
+As you can guess, this repo itself was used in generating this this repo itself.
 
 ## License
 
