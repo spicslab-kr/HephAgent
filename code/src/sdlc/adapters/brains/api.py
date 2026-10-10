@@ -104,7 +104,7 @@ class _ApiBrainBase:
         try:
             __import__(self.sdk_module)
         except ImportError:
-            return ProbeResult(ok=False, live=False, messages=(f"SDK {self.sdk_module!r} not installed: pip install sdlc-agent-teams[{self.sdk_module}]",))
+            return ProbeResult(ok=False, live=False, messages=(f"SDK {self.sdk_module!r} not installed: pip install -e .[{self.sdk_module}]",))
         value, name = _credential(self.credential_ref)
         if self.credential_ref and not value:
             return ProbeResult(ok=False, live=False, messages=(f"environment variable {name} is not set (credential reference only; never put the key in config)",))

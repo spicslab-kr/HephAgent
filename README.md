@@ -1,6 +1,10 @@
-# sdlc-agent-teams
+<p align="center">
+  <img src="assets/hephagent-logo.png" alt="HEPHAGENT: a flame shaped like braces rising from an anvil" width="200">
+</p>
 
-**Six isolated AI teams run one software project end to end, and every hand-over is a file you can read.**
+<h1 align="center">HEPHAGENT</h1>
+
+<p align="center"><b>Six isolated AI teams forge one software project end to end, and every hand-over is a file you can read.</b></p>
 
 Planning → Requirements → Design → Implementation → Testing → Maintenance. Each team is a
 small group of agents with its own workspace; teams never talk to each other, they deliver
@@ -8,7 +12,7 @@ immutable documents. A runtime owns the state, enforces the gates, runs the test
 labels honestly what it could not prove. Built for a software-engineering course, usable by
 anyone who wants to watch an SDLC happen rather than read about it.
 
-**Author:** Kevin Nam (Kyung Hee University, SPICS lab) · **Questions:** <kvnam92310@gmail.com> · **Issues:** [GitHub issues](https://github.com/spicslab-kr/software_engineering_tool/issues)
+**Author:** Kevin Nam (Kyung Hee University, SPICS lab) · **Questions:** <kvnam92310@gmail.com> · **Issues:** [GitHub issues](https://github.com/spicslab-kr/HephAgent/issues)
 
 ![python](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)
 ![brains](https://img.shields.io/badge/brains-Claude%20Code%20%C2%B7%20Codex%20CLI%20%C2%B7%20local-8A2BE2)
@@ -22,6 +26,8 @@ anyone who wants to watch an SDLC happen rather than read about it.
 ---
 
 ## Why this exists
+
+Hephaestus forged for the gods; HEPHAGENT forges software with agents, on an anvil you can inspect.
 
 Students know the SDLC as a diagram. Here they *run* it: write a one-page brief, approve
 each team's plan, read the documents the teams produce, answer the questions they raise,
@@ -50,8 +56,8 @@ Three rules make it honest rather than a demo:
 ## Quick start
 
 ```sh
-git clone https://github.com/spicslab-kr/software_engineering_tool.git
-cd software_engineering_tool/code
+git clone https://github.com/spicslab-kr/HephAgent.git
+cd HephAgent/code
 ./scripts/setup.sh                 # Windows: .\scripts\setup.ps1
 source .venv/bin/activate          # Windows: .\.venv\Scripts\Activate.ps1
 ./scripts/install-backends.sh      # installs Claude Code and Codex, checks both logins
@@ -87,7 +93,7 @@ No API keys: the tool uses your logged-in clients and never copies their tokens.
 ## Repository layout
 
 ```text
-code/      the tool: Python package `sdlc`, CLI, prompts, examples, tests, setup scripts
+code/      the tool: Python package `hephagent` (CLI command `sdlc`), prompts, examples, tests, scripts
 handoff/   the design package the tool was built from: requirements, architecture,
            team specifications, contracts, acceptance tests, implementation plan
 ```

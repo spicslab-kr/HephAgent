@@ -1,4 +1,4 @@
-# SDLC Agent Teams
+# HEPHAGENT (sdlc-agent-teams)
 
 Six AI teams run a software project the way a real engineering organisation does:
 **Planning → Requirements → Design → Implementation → Testing → Maintenance.** Each team has

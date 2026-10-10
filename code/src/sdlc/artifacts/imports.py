@@ -167,7 +167,7 @@ def extract_pdf(data: bytes, *, max_pages: int = 200) -> Extraction:
             method="pypdf",
             text="",
             completeness="blocked",
-            warnings=["pypdf is not installed: `pip install sdlc-agent-teams[pdf]`; the original is retained"],
+            warnings=["pypdf is not installed: `pip install -e .[dev]`; the original is retained"],
         )
     try:
         reader = PdfReader(BytesIO(data))
@@ -223,7 +223,7 @@ def extract_docx(data: bytes) -> Extraction:
             method="python-docx",
             text="",
             completeness="blocked",
-            warnings=["python-docx is not installed: `pip install sdlc-agent-teams[docx]`; the original is retained"],
+            warnings=["python-docx is not installed: `pip install -e .[dev]`; the original is retained"],
         )
     try:
         document = docx.Document(BytesIO(data))

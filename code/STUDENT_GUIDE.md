@@ -31,8 +31,8 @@ Ubuntu `sudo apt install nodejs npm` (or the NodeSource package for a newer vers
 Open a terminal (PowerShell on Windows, a shell on Ubuntu or macOS).
 
 ```powershell
-git clone <REPOSITORY URL> sdlc-agent-teams
-cd sdlc-agent-teams\code          # Ubuntu/macOS: cd sdlc-agent-teams/code
+git clone https://github.com/spicslab-kr/HephAgent.git hephagent
+cd hephagent\code                 # Ubuntu/macOS: cd hephagent/code
 ```
 
 **Windows**
