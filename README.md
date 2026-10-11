@@ -22,7 +22,7 @@ labels honestly what it could not prove. Built for a software-engineering course
 anyone who wants to watch an SDLC happen rather than read about it.
 
 ![python](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)
-![brains](https://img.shields.io/badge/brains-Claude%20Code%20%C2%B7%20Codex%20CLI%20%C2%B7%20local-8A2BE2)
+![brains](https://img.shields.io/badge/brains-Claude%20Code%20%C2%B7%20Codex%20CLI%20%C2%B7%20ChatKHU%20%C2%B7%20local-8A2BE2)
 ![state](https://img.shields.io/badge/state-SQLite%20%C2%B7%20content--addressed%20store-003B57?logo=sqlite&logoColor=white)
 ![isolation](https://img.shields.io/badge/isolation-development%20%7C%20docker%20launcher-orange)
 ![milestones](https://img.shields.io/badge/milestones-M0%E2%80%93M8%20done-brightgreen)
@@ -78,6 +78,22 @@ sdlc export myproject --to out --html && open out/index.html
 You need Python 3.12+, Node.js 20+, a Claude account and a ChatGPT account with Codex.
 No API keys: the tool uses your logged-in clients and never copies their tokens.
 
+## Backends: Claude Code, Codex, ChatKHU
+
+The teams' documents are written by a *brain*, the code by a *coder*. Both are chosen per
+project, or per stage, and can be switched at any time without losing finished work:
+
+| Option | What it is | Billed to | Command |
+|---|---|---|---|
+| `claude` | Claude Code CLI, your claude.ai login | your Claude plan | `sdlc brain NAME claude` |
+| `codex` | Codex CLI, your ChatGPT login | your ChatGPT plan | `sdlc brain NAME codex` |
+| `chatkhu` | **ChatKHU**, Kyung Hee University's AI gateway (OpenAI-compatible) | ChatKHU credits | `sdlc brain NAME chatkhu` after `export CHATKHU_API_KEY=...` |
+| `local` | any OpenAI-compatible server (Ollama, LM Studio, vLLM) | nothing | `sdlc brain NAME local --base-url URL --model M` |
+
+ChatKHU and local servers are brains only; code is written by the `--coder` you chose
+(Codex or Claude Code). Keys are referenced by environment variable name and never stored
+in a project. Details: [`code/README.md`](code/README.md), section 11.
+
 ## How it works, in one picture
 
 ```text
@@ -107,8 +123,8 @@ handoff/   the design package the tool was built from: requirements, architectur
 
 ## What it can and cannot do today
 
-- Runs all six stages with Claude Code and Codex CLI as backends; a local OpenAI-compatible
-  server can serve as a document-writing brain.
+- Runs all six stages with Claude Code and Codex CLI as backends; the ChatKHU gateway of
+  Kyung Hee University or a local OpenAI-compatible server can serve as a document-writing brain.
 - Verified live on Windows with both clients; Ubuntu setup scripts are provided but not yet
   exercised on Ubuntu.
 - Test runs can be isolated in a Docker container (canary-probed); coding clients still run

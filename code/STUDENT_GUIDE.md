@@ -315,7 +315,7 @@ sdlc request NAME FILE                hand Maintenance a change request
 sdlc release NAME                     record a release or see why not
 sdlc continue NAME [--quota-restored] resume after a pause
 sdlc takeover / return-work           do a task by hand
-sdlc brain NAME claude|codex|local [--stage STAGE]   change who writes documents
+sdlc brain NAME claude|codex|chatkhu|local [--stage STAGE]   change who writes documents (chatkhu: set CHATKHU_API_KEY first)
 ```
 
 `--mode auto` at creation lets everything run without prompts (`sdlc run NAME`); use it

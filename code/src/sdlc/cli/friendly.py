@@ -44,6 +44,11 @@ STAGE_TITLES = {
     "testing": "Testing (테스트)",
     "maintenance": "Maintenance (유지보수)",
 }
+#: ChatKHU (Kyung Hee University generative-AI platform) exposes an OpenAI-compatible gateway.
+CHATKHU_GATEWAY = "https://factchat-cloud.mindlogic.ai/v1/gateway"
+CHATKHU_DEFAULT_MODEL = "claude-sonnet-5"
+CHATKHU_KEY_VARIABLE = "CHATKHU_API_KEY"
+
 NOISE_KINDS = {"rejected_output", "checkpoint_summary", "task_graph"}
 
 
@@ -323,15 +328,25 @@ def cmd_export(args: argparse.Namespace) -> dict[str, Any]:
 def cmd_brain(args: argparse.Namespace) -> dict[str, Any]:
     """Choose the model for every stage or one stage: claude, codex, local (an OpenAI-compatible server) or fixture."""
     with _project(args) as context:
-        connection = {"claude": "claude-native", "codex": "codex-native", "fixture": "fixture", "local": "local-model"}[args.which]
-        if args.which == "local":
+        connection = {"claude": "claude-native", "codex": "codex-native", "fixture": "fixture", "local": "local-model", "chatkhu": "chatkhu"}[args.which]
+        if args.which in ("local", "chatkhu"):
             try:
                 import openai  # noqa: F401
             except ImportError as exc:
-                raise CommandError("the local profile needs the OpenAI-compatible client: pip install -e .[local]") from exc
+                raise CommandError(f"the {args.which} profile needs the OpenAI-compatible client: pip install -e .[local]") from exc
+        if args.which == "local":
             if not args.base_url or not args.model:
                 raise CommandError("local needs --base-url (e.g. http://localhost:11434/v1 for Ollama) and --model (the model name the server lists)")
             ConnectionService(context).add(connection, type=ConnectionType.OPENAI_COMPATIBLE, base_url=args.base_url, model=args.model, quota_scope_id="local-model", replace=True)
+        if args.which == "chatkhu":
+            # Kyung Hee University ChatKHU API Gateway: OpenAI dialect. The key stays in the
+            # CHATKHU_API_KEY environment variable; the project records only the reference.
+            import os
+
+            ConnectionService(context).add(connection, type=ConnectionType.OPENAI_COMPATIBLE, base_url=args.base_url or CHATKHU_GATEWAY, model=args.model or CHATKHU_DEFAULT_MODEL,
+                                           credential_ref=f"env:{CHATKHU_KEY_VARIABLE}", quota_scope_id="chatkhu", replace=True)
+            if not os.environ.get(CHATKHU_KEY_VARIABLE):
+                raise CommandError(f"set {CHATKHU_KEY_VARIABLE} in this terminal first (ChatKHU > API Gateway > create a key; it is shown once), then rerun this command. The key is never written to the project.")
         if connection not in context.config.connections:
             raise CommandError(f"{connection} is not configured in this project; run: sdlc new ... or sdlc connection add")
         teams = [Team(args.stage)] if args.stage else None
@@ -620,10 +635,10 @@ def register(sub: Any, subparser: Any, teams: list[str]) -> None:
     p.add_argument("--script", help=argparse.SUPPRESS)
     p.set_defaults(func=cmd_return_work)
 
-    p = sub.add_parser("brain", help="choose claude, codex, local (OpenAI-compatible server) or fixture for all stages or one stage")
+    p = sub.add_parser("brain", help="choose claude, codex, chatkhu (KHU gateway), local (OpenAI-compatible server) or fixture for all stages or one stage")
     p.add_argument("name")
-    p.add_argument("which", choices=["claude", "codex", "local", "fixture"])
+    p.add_argument("which", choices=["claude", "codex", "chatkhu", "local", "fixture"])
     p.add_argument("--stage", choices=teams)
-    p.add_argument("--base-url", help="local: the server OpenAI-compatible base URL, e.g. http://localhost:11434/v1")
-    p.add_argument("--model", help="local: the model name the server serves")
+    p.add_argument("--base-url", help="local: the server OpenAI-compatible base URL, e.g. http://localhost:11434/v1 (chatkhu: preset)")
+    p.add_argument("--model", help="local/chatkhu: the model name the server serves (chatkhu default claude-sonnet-5)")
     p.set_defaults(func=cmd_brain)

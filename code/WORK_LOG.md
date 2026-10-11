@@ -3,6 +3,28 @@
 Keep this current. Newest entry first. Record commands actually run and their results,
 not intentions. Secrets and private model reasoning never belong here.
 
+## 2026-10-11 — branch chatkhu_enabled: ChatKHU as a third Brain (preset, no adapter code)
+
+- ChatKHU (Kyung Hee University generative-AI platform) exposes an OpenAI-compatible
+  API Gateway (`https://factchat-cloud.mindlogic.ai/v1/gateway`, Bearer key; also an
+  Anthropic-compatible `/claude` route). The existing `openai-compatible` connection
+  type and `OpenAICompatibleBrain` cover it, so the change is a preset:
+  `sdlc brain NAME chatkhu [--model M] [--stage S]` creates connection `chatkhu`
+  (base URL preset, `credential_ref: env:CHATKHU_API_KEY`, quota scope `chatkhu`),
+  refuses with instructions when the variable is unset, probes live, binds.
+- Documented in `code/README.md` section 11, the root README badge, the student guide
+  and `.env.example`. The `openai` client is an opt-in extra (`pip install -e .[local]`).
+- Switching between claude, codex and chatkhu is per project or per stage, at any time;
+  finished work and baselines are untouched; each has its own quota scope.
+- Not verified live: no ChatKHU key in this session. Open point to check with a key:
+  whether the gateway honours `response_format: json_schema`; if not, the brain reports
+  `capability_missing` and the runtime's text-JSON validation path applies.
+- Not done (option B): routing the Claude Code *coding* client through the gateway via
+  `ANTHROPIC_BASE_URL`/`ANTHROPIC_AUTH_TOKEN`; it touches the native adapter's
+  credential stripping and needs its own review.
+- Tests: `test_brain_chatkhu_records_only_a_key_reference` (refusal without the key, no
+  key in the project file, model override); full suite (real exit status): passed, 2 skipped.
+
 ## 2026-10-10 — Hands-on walkthrough: fixes found by the instructor
 
 - `sdlc show NAME` crashed with `'ProbeRecord' object has no attribute '__dict__'` on

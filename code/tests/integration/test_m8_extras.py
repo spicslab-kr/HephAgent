@@ -250,3 +250,28 @@ def test_export_html_writes_a_self_contained_overview(tmp_path, capsys):
     assert code == 0 and env["data"]["overview"].endswith("index.html")
     page = (tmp_path / "out" / "index.html").read_text(encoding="utf-8")
     assert "<h2>Requirements</h2>" in page and "requirements_document" in page and "href='requirements/" in page and "<script" not in page.lower().replace("<style", "")
+
+
+# ----------------------------------------------------------------------------- ChatKHU preset (branch chatkhu_enabled)
+
+
+def test_brain_chatkhu_records_only_a_key_reference(tmp_path, capsys, monkeypatch):
+    """The preset binds the Kyung Hee OpenAI-compatible gateway; the key never enters the project."""
+    home = str(tmp_path / "home")
+    assert run(capsys, "new", "demo", "--home", home, "--brief", str(EXAMPLE / "brief.md"), "--brain", "fixture")[0] == 0
+    try:
+        import openai  # noqa: F401
+    except ImportError:
+        code, env = run(capsys, "brain", "demo", "chatkhu", "--home", home)
+        assert code != 0 and "pip install -e .[local]" in json.dumps(env)
+        return
+    monkeypatch.delenv("CHATKHU_API_KEY", raising=False)
+    code, env = run(capsys, "brain", "demo", "chatkhu", "--home", home)
+    assert code != 0 and "CHATKHU_API_KEY" in json.dumps(env)  # refused with the instruction, no probe
+    text = (Path(home) / "demo" / "project.yaml").read_text(encoding="utf-8")
+    assert "factchat-cloud.mindlogic.ai/v1/gateway" in text and "env:CHATKHU_API_KEY" in text
+    monkeypatch.setenv("CHATKHU_API_KEY", "not-a-real-key-for-tests")
+    code, env = run(capsys, "brain", "demo", "chatkhu", "--home", home, "--model", "gpt-5")
+    assert env["data"]["brain"]["planning"] == "chatkhu"  # bound even if the live probe fails on this network
+    text = (Path(home) / "demo" / "project.yaml").read_text(encoding="utf-8")
+    assert "not-a-real-key-for-tests" not in text and "model: gpt-5" in text

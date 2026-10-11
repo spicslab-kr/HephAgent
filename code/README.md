@@ -1,5 +1,7 @@
 # HEPHAGENT (sdlc-agent-teams)
 
+> ChatKHU enabled: Kyung Hee University's AI gateway can serve as the Brain for any stage (`sdlc brain NAME chatkhu`, section 11).
+
 Six AI teams run a software project the way a real engineering organisation does:
 **Planning → Requirements → Design → Implementation → Testing → Maintenance.** Each team has
 its own leader and workers, its own memory and files, and talks to the next team only
@@ -249,7 +251,23 @@ Two modes, switched per project:
 
 Docker Desktop (Windows, macOS) or Docker Engine (Linux) is the only engine supported.
 
-## 11. Extras: local models, more inputs, diagrams, an overview page
+## 11. Extras: ChatKHU, local models, more inputs, diagrams, an overview page
+
+- **ChatKHU** (Kyung Hee University generative-AI platform): its API Gateway is
+  OpenAI-compatible, so it can be the Brain for any stage, billed in ChatKHU credits
+  instead of your personal plans. Create a key in ChatKHU (API Gateway, "+ API 키 생성",
+  shown once), keep it only in an environment variable, then:
+
+  ```sh
+  pip install -e .[local]
+  export CHATKHU_API_KEY=...            # Windows PowerShell: $env:CHATKHU_API_KEY = "..."
+  sdlc brain demo chatkhu                # all stages; --stage design for one; --model gpt-5 to choose
+  sdlc brain demo claude                 # switch back any time; finished work is untouched
+  ```
+
+  The project records only the reference `env:CHATKHU_API_KEY`, never the key. The
+  connection is probed live on binding; a task is refused, not failed, when the variable
+  is missing. It is a Brain only: code is still written by the coder you chose.
 
 - **Local model** (Ollama, LM Studio, vLLM, anything OpenAI-compatible):
   `pip install -e .[local]`, then `sdlc brain demo local --base-url http://localhost:11434/v1 --model llama3.1`.
